@@ -1,0 +1,63 @@
+{
+  "name": "3dio-inspector-plugins",
+  "version": "0.0.1",
+  "description": "Connects A-Frame Inspector to 3d.io APIs",
+  "keywords": [
+    "3d",
+    "aframe",
+    "cardboard",
+    "components",
+    "oculus",
+    "vive",
+    "rift",
+    "vr",
+    "WebVR",
+    "WegGL",
+    "three",
+    "three.js",
+    "3D model",
+    "api",
+    "visualization",
+    "furniture",
+    "real estate",
+    "interior",
+    "building",
+    "architecture",
+    "3d.io"
+  ],
+  "homepage": "https://3d.io",
+  "repository": "archilogic-com/3dio-inspector-plugins",
+  "license": "MIT",
+  "author": {
+    "name": "archilogic",
+    "email": "dev.rocks@archilogic.com",
+    "url": "https://archilogic.com"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp dev-server",
+    "build": "gulp build",
+    "release": "gulp release"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-runtime": "^6.26.0",
+    "chalk": "^2.0.1",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-git": "^2.4.1",
+    "gulp-gzip": "^1.4.0",
+    "gulp-less": "^3.3.2",
+    "gulp-s3": "^0.11.0",
+    "gulp-watch": "^4.3.11",
+    "lite-server": "^2.3.0",
+    "moment": "^2.18.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-json": "^2.1.1",
+    "rollup-plugin-less": "^0.1.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "through2": "^2.0.3",
+    "uglify-js": "^3.0.10"
+  }
+}
