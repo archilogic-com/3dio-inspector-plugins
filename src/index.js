@@ -4,6 +4,7 @@ import el from './common/dom-el.js'
 import pluginManager from './plugin-manager.js'
 // plugins
 import furnitureLibrary from './plugins/furniture-library.js'
+import bakeLightmaps from './plugins/bake-lightmaps.js'
 
 var PLUGINS = {
   // name
@@ -12,6 +13,10 @@ var PLUGINS = {
     displayTitle: '🏠&nbsp;&nbsp;furniture library',
     // access
     module: furnitureLibrary
+  },
+  bakeLightmaps: {
+    displayTitle: '🔥&nbsp;&nbsp;bake lightmaps',
+    module: bakeLightmaps
   }
 }
 
