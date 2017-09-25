@@ -2,9 +2,9 @@
  * @preserve
  * @name 3dio-inspector-plugins
  * @version 0.0.1
- * @date 2017/09/25 16:51
+ * @date 2017/09/25 16:59
  * @branch master
- * @commit 42476125c86343cae835dc0e3910d449f32410f7
+ * @commit 16ad6b4a83d8415854ce4b0e02722c2c9b1c151a
  * @description Connects A-Frame Inspector to 3d.io APIs
  * @see https://3d.io
  * @tutorial https://github.com/archilogic-com/3dio-inspector-plugins
@@ -18,7 +18,7 @@
 	(global.io3dInspectorPlugins = factory());
 }(this, (function () { 'use strict';
 
-	var BUILD_DATE='2017/09/25 16:51', GIT_BRANCH = 'master', GIT_COMMIT = '42476125c86343cae835dc0e3910d449f32410f7'
+	var BUILD_DATE='2017/09/25 16:59', GIT_BRANCH = 'master', GIT_COMMIT = '16ad6b4a83d8415854ce4b0e02722c2c9b1c151a'
 
 	var css = "#io3d-inspector-plugins {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 38px;\n  left: 181px;\n  height: 20px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n";
 
@@ -371,6 +371,168 @@
 	  hide: hide$1
 	};
 
+	var isInitialized$1 = false;
+	var isVisible = false;
+	var mainUiEl;
+
+	// methods
+
+	function init$2 () {
+
+	  if (isInitialized$1) return
+	  isInitialized$1 = true;
+
+	  createUi();
+
+	}
+
+	/**
+	 * @param selected - THREE.Object3D or DOM query string selector referencing A-Frame element
+	 */
+
+	function bakeLightmaps (selected) {
+
+	  if (!selected) {
+	    io3d.utils.ui.message.error('Please select a group or a single object.');
+	    return
+	  }
+
+	  if (typeof selected === 'string') {
+	    selected = document.querySelector(selected).object3D;
+	  }
+
+	  // run
+
+	  var timestamp, previousTimestamp = Date.now();
+
+	  function getDuration () {
+	    timestamp = Date.now();
+	    var duration = timestamp - previousTimestamp;
+	    previousTimestamp = timestamp;
+	    return Math.round(duration / 1000) + 's'
+	  }
+
+	  var uiMessage = io3d.utils.ui.message('Light map baking in progress...', 0);
+
+	  io3d.publish(selected).then(function (storageId) {
+
+	    console.log('Imported model to as data3d: ' + getDuration());
+	    console.log('Imported file: ' + io3d.utils.data3d.getInspectorUrl(storageId));
+
+	    return Promise.all([
+	      // send baking request and
+	      io3d.light.bake(storageId).then(io3d.light.bake.whenDone),
+	      // wait for hi-res DDS texture generation
+	      io3d.publish.whenHiResTexturesReady(storageId)
+	    ])
+
+	  }).then(function (results) {
+	    var bakedStorageId = results[0];
+
+	    timestamp = Date.now();
+	    console.log('Bake done: ' + getDuration());
+	    console.log('Baked file: ' + io3d.utils.data3d.getInspectorUrl(bakedStorageId));
+
+	    uiMessage.close();
+	    io3d.utils.ui.message.success('Baking Successful');
+
+	    addBakedModelToScene(selected, bakedStorageId);
+
+	  }, io3d.utils.ui.message.error);
+
+	}
+
+	function addBakedModelToScene (selected, storageId) {
+
+	  var parent = selected.parent;
+
+	  var boundingBox = new THREE.Box3().setFromObject(selected);
+	  var width = (boundingBox.max.x - boundingBox.min.x);
+	  var position = new THREE.Vector3(
+	    parent.position.x + width + width * 0.2,
+	    parent.position.x,
+	    parent.position.z
+	  );
+
+	  // add baked element to aframe scene
+	  var bakedEl = document.createElement('a-entity');
+	  bakedEl.setAttribute('position', position);
+	  bakedEl.setAttribute('io3d-data3d', 'key:' + storageId + ';lightMapExposure:1.1;lightMapIntensity:0.85;');
+	  parent.el.append(bakedEl);
+
+	  // select baked file
+	  bakedEl.addEventListener('model-loaded', function () {
+	    AFRAME.INSPECTOR.selectEntity(bakedEl);
+	  });
+
+	}
+
+	function createUi () {
+
+	  mainUiEl = el('<div>',{
+	    id: 'io3d-inspector-plugins___bake-lightmaps___container'
+	  }).appendTo(document.body);
+
+	  var mainBar = el('<div>',{
+	    id: 'io3d-inspector-plugins___bake-lightmaps___main-bar'
+	  }).appendTo(mainUiEl);
+
+	  el('<span>', {
+	    html: 'bake lightmaps API 🔥'
+	  }).appendTo(mainBar);
+
+	  el('<a>', {
+	    html: 'github',
+	    href: 'https://github.com/archilogic-com/3dio-inspector-plugins/'
+	  }).appendTo(mainBar);
+
+	  el('<a>', {
+	    html: 'questions?',
+	    href: window.encodeURI('https://stackoverflow.com/questions/tagged/aframe and 3d.io or archilogic')
+	  }).appendTo(mainBar);
+
+	  el('<a>', {
+	    html: 'x',
+	    click: hide$2
+	  }).appendTo(mainBar);
+
+	  el('<div>',{
+	    id: 'io3d-inspector-plugins___bake-lightmaps___bake-button',
+	    text: 'BAKE',
+	    click: function () {
+	      bakeLightmaps(AFRAME.INSPECTOR.selected);
+	    }
+	  }).appendTo(mainUiEl);
+
+	}
+
+	function show$2 () {
+
+	  init$2();
+	  if (isVisible) return
+	  isVisible = true;
+
+	  mainUiEl.show();
+
+	}
+
+	function hide$2 () {
+
+	  if (!isVisible) return
+	  isVisible = false;
+
+	  mainUiEl.hide();
+
+	}
+
+	// expose API
+
+	var bakeLightmapsPlugin = {
+	  show: show$2,
+	  hide: hide$2,
+	  bakeLightmaps: bakeLightmaps
+	};
+
 	// plugin manager & menu
 	// plugins
 	var PLUGINS = {
@@ -380,6 +542,10 @@
 	    displayTitle: '🏠&nbsp;&nbsp;furniture library',
 	    // access
 	    module: furnitureLibraryPlugin
+	  },
+	  bakeLightmaps: {
+	    displayTitle: '🔥&nbsp;&nbsp;bake lightmaps',
+	    module: bakeLightmapsPlugin
 	  }
 	};
 
