@@ -3,26 +3,16 @@ import el from './common/dom-el.js'
 // plugin manager & menu
 import pluginManager from './plugin-manager.js'
 // plugins
-import bakeLightMaps from './plugins/bake-lightmaps.js'
-import modify from './plugins/modify.js'
+import furnitureLibrary from './plugins/furniture-library.js'
 
 var PLUGINS = {
   // name
-  bakeLightMaps: {
+  furnitureLibrary: {
     // ui
-    displayTitle: '🔥&nbsp;&nbsp;bake light maps',
+    displayTitle: '🏠&nbsp;&nbsp;furniture library',
     // access
-    module: bakeLightMaps
-  },
-  modify: {
-    displayTitle: '🔮&nbsp;&nbsp;modify 3d data',
-    module: modify
+    module: furnitureLibrary
   }
-  // WIP
-  //furnitureLibrary: {
-  //  displayTitle: '🏠&nbsp;&nbsp;furniture library',
-  //  module: furnitureLib
-  //}
 }
 
 var initialPluginName = null

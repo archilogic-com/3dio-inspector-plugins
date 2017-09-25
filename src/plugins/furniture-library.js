@@ -10,9 +10,9 @@ function hide() {
 
 // expose API
 
-var modifyPlugin = {
+var furnitureLibraryPlugin = {
   show: show,
   hide: hide
 }
 
-export default modifyPlugin
+export default furnitureLibraryPlugin
