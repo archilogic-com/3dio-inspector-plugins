@@ -10,7 +10,7 @@ function init () {
   listTab = createListTabUi({
     title: 'Furniture Library',
     emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
-    listInfo: 'All models are optimized for mobile and have progressive texture loading with DDS compression for desktop. Enjoy ;)',
+    listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
     onSearchInput: search,
     onItemDrop: addToScene
   })
