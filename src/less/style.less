@@ -1,93 +1,69 @@
-#io3d-inspector-plugins {
+* {
 
-    font-family: Roboto, BlinkMacSystemFont, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    // no outline (dotted border) after cklicking object
+    outline: none;
 
-    &___3dio-button {
-        z-index: 100000;
-        position: absolute;
-        top: 38px;
-        left: 181px;
-        height: 20px;
-        text-align: right;
-        border-radius: 3px;
-        cursor: pointer;
-        svg {
-            height: 100%;
-            g {
-                fill: #bcbcbc;
-                stroke: #bcbcbc;
-                stroke-width: 13;
-                &:hover {
-                    fill: #1faaf2;
-                    stroke: #1faaf2;
-                    stroke-width: 13;
-                }
-            }
-        }
-    }
-
-    &___plugins-menu {
-        z-index: 100001;
-        position: absolute;
-        top: 0;
-        left: 250px;
-        width: 230px;
-
-        @-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {
-            0% { -webkit-transform: translateY(-40%); opacity: 0; }
-            100% { -webkit-transform: translateY(0%); opacity: 1; }
-        }
-        @keyframes io3d-inspector-plugins___plugins-menu-slide-in {
-            0% { transform: translateY(-40%); opacity: 0; }
-            100% { transform: translateY(0%); opacity: 1; }
-        }
-
-        @-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {
-            0% { -webkit-transform: translateY(0%); opacity: 1; }
-            100% { -webkit-transform: translateY(-40%); opacity: 0; }
-        }
-        @keyframes io3d-inspector-plugins___plugins-menu-slide-out {
-            0% { transform: translateY(0%); opacity: 1; }
-            100% { transform: translateY(-40%); opacity: 0; }
-        }
-
-        &___container {
-            background-color: rgba(0,0,0,0.9);
-            padding: 0 12px 0 12px;
-        }
-
-        &___header {
-            padding: 14px 0 14px 0;
-            border-bottom: 1px solid #bcbcbc;
-        }
-
-        &___close-button {
-            position: absolute;
-            top: 0;
-            right: 12px;
-            padding: 14px 0 14px 0;
-            cursor: pointer;
-        }
-
-        &___button {
-            padding: 10px 0 10px 0;
-            border-bottom: 1px solid #bcbcbc;
-            cursor: pointer;
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-        }
-
-        &___footer {
-            padding: 14px 0 14px 0;
-            a {
-                color: white;
-            }
-        }
-
-    }
+    // prevent padding changing dimensions
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 
 }
 
+// http://meyerweb.com/eric/tools/css/reset/
+// v2.0 | 20110126
+// License: none (public domain)
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+
+// HTML5 display-role reset for older browsers
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@import "tab.less";
+
+@import "plugin-manager.less";
+
 @import "bake-lightmaps.less";
+@import "furniture-library.less";

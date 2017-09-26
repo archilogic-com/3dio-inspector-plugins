@@ -1,0 +1,161 @@
+#io3d-inspector-plugins___furniture-library {
+
+    &___header {
+        position: absolute;
+        width: 100%;
+        height: 64px;
+        background-color: #333;
+        top: 0;
+        left: 0;
+    }
+
+    &___title {
+        position: absolute;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        color: #bcbcbc;
+        padding: 0 0 0 8px;
+        top: 0;
+        left: 0;
+        letter-spacing: 1px;
+    }
+
+    &___close-button {
+        -webkit-font-smoothing: antialiased;
+        font-family: FontAwesome;
+        font-size: 16px;
+        font-weight: 200;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        top: 9px;
+        right: 4px;
+        cursor: pointer;
+        color: #bcbcbc;
+        &:hover {
+            color: #1faaf2;
+        }
+        &:before {
+            content: "\f00d";
+        }
+    }
+
+    &___search-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        writing-mode: horizontal-tb;
+        -webkit-rtl-ordering: logical;
+        -webkit-border-image: none;
+
+        font-family: "Roboto Mono", Consolas, "Andale Mono", Monaco, "Courier New", monospace;
+        font-size: 11px;
+        font-weight: normal;
+        letter-spacing: 1px;
+
+        position: absolute;
+        width: 218px;
+        height: 22px;
+        line-height: 22px;
+        top: 36px;
+        left: 6px;
+        padding: 0 0 0 7px;
+        border-radius: 5px;
+        border: 0;
+        background-color: rgb(34, 34, 34);
+    }
+
+    &___search-icon {
+        font-family: FontAwesome;
+        font-size: 12px;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        top: 36px;
+        right: 0;
+        color: hsl(0, 0, 0.3);;
+        &:before {
+            content: "\f002";
+        }
+    }
+
+    &___search-results-container {
+        position: absolute;
+        width: 100%;
+        top: 64px;
+        left: 0;
+        bottom: 0;
+        overflow: auto;
+    }
+
+    &___search-results-info {
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        height: 30px;
+        left: 0;
+    }
+
+    &___search-results {
+        position: absolute;
+        width: 100%;
+        top: 30px;
+        left: 0;
+        background-color: rgb(43,43,43);
+
+        .furniture-search-result-item {
+            display: inline-block;
+            margin: 5px 0 0 5px;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255,255,255,0);
+
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Required to make elements draggable in old WebKit */
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+
+            img {
+                width: 90%;
+                height: 90%;
+                object-fit: contain;
+            }
+        }
+
+    }
+
+    &___drop-plane {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 230px;
+        height: 100%;
+        background-color: hsla(200, 89%, 54%, 0.15);
+        border: 2px solid hsla(200, 89%, 54%, 1);
+        z-index: 100000;
+        opacity: 0;
+        -webkit-transition: opacity 200ms;
+        transition: opacity 200ms;
+    }
+
+    &___drop-plane-info {
+        width: 100%;
+        height: 100%;
+        line-height: 100vh;
+        text-align: center;
+        color: hsla(200, 89%, 54%, 0.2);
+        font-size: 68px;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+}

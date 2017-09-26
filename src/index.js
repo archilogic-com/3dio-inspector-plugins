@@ -4,6 +4,7 @@ import el from './common/dom-el.js'
 import pluginManager from './plugin-manager.js'
 // plugins
 import furnitureLibrary from './plugins/furniture-library.js'
+//import googleBlocks from './plugins/google-blocks.js'
 
 var PLUGINS = {
   // name
@@ -13,6 +14,10 @@ var PLUGINS = {
     // access
     module: furnitureLibrary
   }
+  //googleBlocks: {
+  //  displayTitle: '🥑&nbsp;&nbsp;google blocks',
+  //  module: googleBlocks
+  //}
 }
 
 var initialPluginName = null
