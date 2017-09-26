@@ -2,9 +2,9 @@
  * @preserve
  * @name 3dio-inspector-plugins
  * @version 0.0.1
- * @date 2017/09/25 16:51
+ * @date 2017/09/26 19:36
  * @branch master
- * @commit 42476125c86343cae835dc0e3910d449f32410f7
+ * @commit 16ad6b4a83d8415854ce4b0e02722c2c9b1c151a
  * @description Connects A-Frame Inspector to 3d.io APIs
  * @see https://3d.io
  * @tutorial https://github.com/archilogic-com/3dio-inspector-plugins
@@ -18,9 +18,9 @@
 	(global.io3dInspectorPlugins = factory());
 }(this, (function () { 'use strict';
 
-	var BUILD_DATE='2017/09/25 16:51', GIT_BRANCH = 'master', GIT_COMMIT = '42476125c86343cae835dc0e3910d449f32410f7'
+	var BUILD_DATE='2017/09/26 19:36', GIT_BRANCH = 'master', GIT_COMMIT = '16ad6b4a83d8415854ce4b0e02722c2c9b1c151a'
 
-	var css = "#io3d-inspector-plugins {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 38px;\n  left: 181px;\n  height: 20px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n";
+	var css = "* {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\nsection {\n  display: block;\n}\nbody {\n  line-height: 1;\n}\nol,\nul {\n  list-style: none;\n}\nblockquote,\nq {\n  quotes: none;\n}\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.io3d-inspector-plugins___tab-container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 30px;\n  left: 0;\n  height: 100%;\n  z-index: 100000;\n}\n.io3d-inspector-plugins___tab {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 230px;\n  background-color: #2b2b2b;\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 39px;\n  left: 182px;\n  height: 18px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  letter-spacing: 0px;\n  color: #bcbcbc;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___footer a:hover {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n#io3d-inspector-plugins___furniture-library___header {\n  position: absolute;\n  width: 100%;\n  height: 64px;\n  background-color: #333;\n  top: 0;\n  left: 0;\n}\n#io3d-inspector-plugins___furniture-library___title {\n  position: absolute;\n  width: 100%;\n  height: 36px;\n  line-height: 36px;\n  color: #bcbcbc;\n  padding: 0 0 0 8px;\n  top: 0;\n  left: 0;\n  letter-spacing: 1px;\n}\n#io3d-inspector-plugins___furniture-library___close-button {\n  -webkit-font-smoothing: antialiased;\n  font-family: FontAwesome;\n  font-size: 16px;\n  font-weight: 200;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  line-height: 20px;\n  border-radius: 50%;\n  text-align: center;\n  top: 9px;\n  right: 4px;\n  cursor: pointer;\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___furniture-library___close-button:hover {\n  color: #1faaf2;\n}\n#io3d-inspector-plugins___furniture-library___close-button:before {\n  content: \"\\f00d\";\n}\n#io3d-inspector-plugins___furniture-library___search-input {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  writing-mode: horizontal-tb;\n  -webkit-rtl-ordering: logical;\n  -webkit-border-image: none;\n  font-family: \"Roboto Mono\", Consolas, \"Andale Mono\", Monaco, \"Courier New\", monospace;\n  font-size: 11px;\n  font-weight: normal;\n  letter-spacing: 1px;\n  position: absolute;\n  width: 218px;\n  height: 22px;\n  line-height: 22px;\n  top: 36px;\n  left: 6px;\n  padding: 0 0 0 7px;\n  border-radius: 5px;\n  border: 0;\n  background-color: #222222;\n}\n#io3d-inspector-plugins___furniture-library___search-icon {\n  font-family: FontAwesome;\n  font-size: 12px;\n  position: absolute;\n  width: 22px;\n  height: 22px;\n  line-height: 22px;\n  top: 36px;\n  right: 0;\n  color: #4d4d4d;\n}\n#io3d-inspector-plugins___furniture-library___search-icon:before {\n  content: \"\\f002\";\n}\n#io3d-inspector-plugins___furniture-library___search-results-container {\n  position: absolute;\n  width: 100%;\n  top: 64px;\n  left: 0;\n  bottom: 0;\n  overflow: auto;\n}\n#io3d-inspector-plugins___furniture-library___search-results-info {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  height: 30px;\n  left: 0;\n}\n#io3d-inspector-plugins___furniture-library___search-results {\n  position: absolute;\n  width: 100%;\n  top: 30px;\n  left: 0;\n  background-color: #2b2b2b;\n}\n#io3d-inspector-plugins___furniture-library___search-results .furniture-search-result-item {\n  display: inline-block;\n  margin: 5px 0 0 5px;\n  position: relative;\n  width: 100px;\n  height: 100px;\n  background-color: rgba(255, 255, 255, 0);\n  -moz-user-select: none;\n  -khtml-user-select: none;\n  -webkit-user-select: none;\n  user-select: none;\n  /* Required to make elements draggable in old WebKit */\n  -khtml-user-drag: element;\n  -webkit-user-drag: element;\n}\n#io3d-inspector-plugins___furniture-library___search-results .furniture-search-result-item img {\n  width: 90%;\n  height: 90%;\n  object-fit: contain;\n}\n#io3d-inspector-plugins___furniture-library___drop-plane {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 230px;\n  height: 100%;\n  background-color: rgba(33, 172, 242, 0.15);\n  border: 2px solid #21acf2;\n  z-index: 100000;\n  opacity: 0;\n  -webkit-transition: opacity 200ms;\n  transition: opacity 200ms;\n}\n#io3d-inspector-plugins___furniture-library___drop-plane-info {\n  width: 100%;\n  height: 100%;\n  line-height: 100vh;\n  text-align: center;\n  color: rgba(33, 172, 242, 0.2);\n  font-size: 68px;\n  font-weight: 400;\n  letter-spacing: 2px;\n}\n";
 
 	// basic element utils for convenience inspired by jquery API
 
@@ -84,6 +84,10 @@
 	function extendWithConvenienceMethods (el) {
 	  el.remove = function removeElement (child) {
 	    child ? el.removeChild(child) : el.parentNode.removeChild(el);
+	    return el
+	  };
+	  el.empty = function emptyElement () {
+	    while (el.lastChild) el.removeChild(el.lastChild);
 	    return el
 	  };
 	  el.append = function append (o) {
@@ -354,14 +358,297 @@
 	  showPlugin: showPlugin
 	};
 
-	// WIP
+	function createTabUi () {
 
-	function show$1() {
+	  // internals
+
+	  var isVisible = false;
+
+	  // DOM
+
+	  var tabContainerEl = el('<div>',{
+	    class: 'io3d-inspector-plugins___tab-container'
+	  }).appendTo(document.body);
+
+	  var tabEl = el('<div>',{
+	    class: 'io3d-inspector-plugins___tab'
+	  }).appendTo(tabContainerEl);
+
+	  // methods
+
+	  function slideIn (callback) {
+	    
+	    if (isVisible) return
+	    isVisible = true;
+
+	    tabEl.style.opacity = 0;
+	    tabEl.style.display = 'block';
+
+	    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
+	    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
+	    tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
+	    tabEl.style['animation-fill-mode'] = 'forwards';
+
+	    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500);
+
+	  }
+
+	  function slideOut (callback) {
+
+	    if (!isVisible) return
+	    isVisible = false;
+
+	    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
+	    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
+	    tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
+	    tabEl.style['animation-fill-mode'] = 'forwards';
+
+	    // remove element
+	    setTimeout(function () {
+	      tabEl.style.display = 'none';
+	    }, 600);
+
+	    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300);
+
+	  }
+
+	  // expose API
+
+	  return {
+	    slideIn: slideIn,
+	    slideOut: slideOut,
+	    el: tabEl
+	  }
 
 	}
 
-	function hide$1() {
+	var pickingPlane = new THREE.Mesh( new THREE.PlaneBufferGeometry(1000000, 1000000), new THREE.MeshBasicMaterial() );
+	pickingPlane.rotation.x = -Math.PI / 2;
+	pickingPlane.updateMatrixWorld();
+	var pickingVector = new THREE.Vector3();
+	var pickingRaycaster = new THREE.Raycaster();
 
+	function pickPointOnGroundPlane(args) {
+
+	  // API
+	  var x = args.x;
+	  var y = args.y;
+	  var canvas = args.canvas;
+	  var camera = args.camera;
+
+	  // get normalized 2D coordinates
+	  var viewport = canvas.getBoundingClientRect();
+	  var nX =   2 * (x - viewport.left) / viewport.width  - 1;
+	  var nY = -(2 * (y - viewport.top) / viewport.height - 1);
+
+	  // setup raycaster
+	  pickingRaycaster.set(
+	    camera.position,
+	    pickingVector.set(nX, nY, 1).unproject(camera).sub(camera.position).normalize()
+	  );
+
+	  // shoot ray
+	  var intersects = pickingRaycaster.intersectObject(pickingPlane);
+
+	  // in case of no result
+	  if (!intersects.length === 0) {
+	    console.warn('Picking raycaster got 0 results.');
+	    return new THREE.Vector3()
+	  }
+
+	  return intersects[ 0 ].point
+
+	}
+
+	// internals
+
+	var PRESET_SEARCH = 'shelf';
+
+	var isInitialized$1 = false;
+	var tab;
+	var searchResultsEl;
+	var dropPlaneEl;
+	var searchInputEl;
+
+
+	function search (value) {
+
+	  io3d.furniture
+	    .search(value, {limit: 50})
+	    // ... and update view when ready
+	    .then(updateSearchResultsUi)
+	    // ... or catch errors
+	    .catch(function (error) {
+	      console.error(error);
+	      io3d.utils.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2));
+	    });
+
+	}
+
+	function updateSearchResultsUi (items) {
+
+	  searchResultsEl.empty();
+
+	  if (!items.length) searchResultsEl.text('0 results');
+	  
+	  items.forEach(function(item){
+
+	    var itemEl = el('<div>', { class: 'furniture-search-result-item' }).appendTo(searchResultsEl);
+	    itemEl.setAttribute('draggable', true);
+
+	    el('<img>',{ src: item.indexImage }).appendTo(itemEl);
+
+	    itemEl.addEventListener('dragstart', function onFurnitureItemDragStart(e) {
+	      if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+	      fadeInDropPlane();
+	      e.dataTransfer.effectAllowed = 'move';
+	      e.dataTransfer.setData('text/plain', item.id);
+	      return false
+	    }, false);
+
+	    itemEl.addEventListener('dragend', function onFurnitureItemDragEnd(e) {
+	      if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+	      fadeOutDropPlane();
+	      return false
+	    }, false);
+
+	  });
+
+	}
+
+	function createUI () {
+
+	  var mainEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___main-el'
+	  }).appendTo(document.body);
+
+	  tab = createTabUi();
+
+	  var headerEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___header',
+	  }).appendTo(tab.el);
+
+	  el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___title',
+	    html: 'Furniture Library'
+	  }).appendTo(headerEl);
+
+	  el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___close-button',
+	    //text: 'X',
+	    click: hide$1
+	  }).appendTo(headerEl);
+
+	  searchInputEl = el('<input>', {
+	    id: 'io3d-inspector-plugins___furniture-library___search-input',
+	    value: PRESET_SEARCH
+	  }).appendTo(headerEl);
+	  searchInputEl.addEventListener('change', function () {
+	    search(searchInputEl.value);
+	  });
+
+	  el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___search-icon',
+	  }).appendTo(headerEl);
+
+	  var searchResultsContainerEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___search-results-container',
+	  }).appendTo(tab.el);
+
+	  var searchResultsInfoEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___search-results-info',
+	  }).appendTo(searchResultsContainerEl);
+
+	  searchResultsEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___search-results',
+	  }).appendTo(searchResultsContainerEl);
+
+	  dropPlaneEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___drop-plane',
+	    style: 'display: none;'
+	  }).appendTo(document.body);
+	  dropPlaneEl.addEventListener('dragover', onFurnitureItemDragOver, false);
+	  dropPlaneEl.addEventListener('drop', onFurnitureItemDrop, false);
+
+	  var dropPlaneInfoEl = el('<div>', {
+	    id: 'io3d-inspector-plugins___furniture-library___drop-plane-info',
+	    text: 'drop here'
+	  }).appendTo(dropPlaneEl);
+
+	  search(PRESET_SEARCH);
+
+	  isInitialized$1 = true;
+
+	}
+
+	function onFurnitureItemDragOver(e) {
+
+	  if (e.preventDefault) e.preventDefault(); // Necessary. Allows us to drop.
+
+	  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+	  return false
+
+	}
+
+	function onFurnitureItemDrop (e) {
+
+	  if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting.
+	  if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+
+	  // hide dropPlaneEl
+	  fadeOutDropPlane();
+
+	  // get picking point
+	  var position = pickPointOnGroundPlane({
+	    x: e.x,
+	    y: e.y,
+	    canvas: AFRAME.scenes[0].canvas,
+	    camera: AFRAME.INSPECTOR.EDITOR_CAMERA
+	  });
+
+	  // get furnitureId
+	  var furnitureId = e.dataTransfer.getData('text/plain');
+
+	  // add new entity to scene
+	  var newEntity = document.createElement('a-entity');
+	  newEntity.setAttribute('io3d-furniture', 'id', furnitureId);
+	  newEntity.setAttribute('position', position.x + ' 0 ' + position.z);
+	  document.querySelector('a-scene').appendChild(newEntity);
+
+	  return false
+	}
+
+	function fadeInDropPlane () {
+	  dropPlaneEl.style.display = 'block';
+	  setTimeout(function(){
+	    dropPlaneEl.style.opacity = 1;
+	  }, 50);
+	}
+
+	function fadeOutDropPlane () {
+	  dropPlaneEl.style.opacity = 0;
+	  setTimeout(function(){
+	    dropPlaneEl.style.display = 'none';
+	  }, 300);
+	}
+
+	function show$1 (callback) {
+	  if (!isInitialized$1) createUI();
+	  tab.slideIn(function(){
+	    setTimeout(function(){
+	      searchInputEl.focus();
+	      searchInputEl.selectionStart = 10000;
+	      searchInputEl.selectionEnd = 10000;
+	    }, 10);
+	    if (typeof callback === 'function') callback();
+	  });
+	  return furnitureLibraryPlugin
+	}
+
+	function hide$1 (callback) {
+	  tab.slideOut(callback);
+	  return furnitureLibraryPlugin
 	}
 
 	// expose API
@@ -373,6 +660,8 @@
 
 	// plugin manager & menu
 	// plugins
+	//import googleBlocks from './plugins/google-blocks.js'
+
 	var PLUGINS = {
 	  // name
 	  furnitureLibrary: {
@@ -381,6 +670,10 @@
 	    // access
 	    module: furnitureLibraryPlugin
 	  }
+	  //googleBlocks: {
+	  //  displayTitle: '🥑&nbsp;&nbsp;google blocks',
+	  //  module: googleBlocks
+	  //}
 	};
 
 	var initialPluginName = null;
