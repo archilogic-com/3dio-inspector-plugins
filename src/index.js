@@ -4,7 +4,8 @@ import el from './common/dom-el.js'
 import pluginManager from './plugin-manager.js'
 // plugins
 import furnitureLibrary from './plugins/furniture-library.js'
-//import googleBlocks from './plugins/google-blocks.js'
+import googleBlocks from './plugins/google-blocks.js'
+import staffPicks from './plugins/staff-picks.js'
 
 var PLUGINS = {
   // name
@@ -13,17 +14,21 @@ var PLUGINS = {
     displayTitle: '🏠&nbsp;&nbsp;furniture library',
     // access
     module: furnitureLibrary
+  },
+  googleBlocks: {
+    displayTitle: '🥑&nbsp;&nbsp;google blocks',
+    module: googleBlocks
+  },
+  staffPicks: {
+    displayTitle: '✨&nbsp;&nbsp;staff picks',
+    module: staffPicks
   }
-  //googleBlocks: {
-  //  displayTitle: '🥑&nbsp;&nbsp;google blocks',
-  //  module: googleBlocks
-  //}
 }
 
-var initialPluginName = null
+window.io3d.aFrame.activePluginName = null
 
 function setInitialPlugin (name) {
-  initialPluginName = name
+  window.io3d.aFrame.activePluginName = name
 }
 
 // check dependencies
@@ -39,10 +44,20 @@ if (!window.io3d) {
 }
 
 // prevents 3dio lib from loading plugins (ie in dev mode)
-  window.io3d.aFrame.pluginsLoaded = true
+window.io3d.aFrame.pluginsLoaded = true
 
 // add css to page
-el('<style>', {media: 'screen', text: css}).appendTo(document.head)
+var cssEl = el('<style>',{
+  id: 'io3d-inspector-plugins___css',
+  media: 'screen',
+  text: css
+})
+function appendCss() {
+  cssEl.appendTo(document.head)
+}
+function detachCss() {
+  document.head.removeChild(cssEl)
+}
 
 // initializes launcher with plugins
 pluginManager.setPlugins(PLUGINS)
@@ -53,12 +68,36 @@ if (AFRAME && AFRAME.INSPECTOR && AFRAME.INSPECTOR.opened) {
   init()
 } else {
   // initialize on inspector ready event
-  window.addEventListener('inspector-loaded', init)
+  window.addEventListener('inspector-loaded', init, { once:true })
 }
 
 function init() {
+
+  if (typeof AFRAME.INSPECTOR.on !== 'function') {
+    console.warn('3dio.js: 3d.io inspector plugins require A-Frame version 0.7.0 or higher.')
+
+  } else {
+
+    if (AFRAME.INSPECTOR.opened) show()
+    AFRAME.INSPECTOR.on('inspectormodechanged', function(isOpen){
+      isOpen ? show() : hide()
+    })
+
+  }
+
+}
+
+function show() {
+  appendCss()
   pluginManager.show()
-  if (initialPluginName) pluginManager.showPlugin(initialPluginName)
+  if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName)
+}
+
+function hide() {
+  setInitialPlugin(null)
+  pluginManager.hide(function() {
+    detachCss()
+  })
 }
 
 // expose API

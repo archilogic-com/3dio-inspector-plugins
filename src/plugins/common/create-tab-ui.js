@@ -9,7 +9,7 @@ export default function createTabUi () {
   // DOM
 
   var tabContainerEl = el('<div>',{
-    class: 'io3d-inspector-plugins___tab-container'
+    class: 'io3d-inspector-plugins io3d-inspector-plugins___tab-container',
   }).appendTo(document.body)
 
   var tabEl = el('<div>',{

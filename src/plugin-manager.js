@@ -27,6 +27,7 @@ function init() {
   
   io3dButtonEl = el('<div>', {
     id: 'io3d-inspector-plugins___3dio-button',
+    class: 'io3d-inspector-plugins',
     html: svg3dioLogo,
     click: toggleMenu
   }).appendTo(document.body)
@@ -34,7 +35,8 @@ function init() {
   // launcher menu
 
   menuContainerEl = el('<div>', {
-    id: 'io3d-inspector-plugins___plugins-menu'
+    id: 'io3d-inspector-plugins___plugins-menu',
+    class: 'io3d-inspector-plugins'
   }).appendTo(document.body)
 
   menuEl = el('<div>', {
@@ -96,9 +98,10 @@ function show() {
   
 }
 
-function hide() {
+function hide(callback) {
 
   io3dButtonEl.hide()
+  if (activePluginName) plugins[activePluginName].module.hide(callback)
   hideMenu()
 
 }
@@ -129,7 +132,7 @@ function showMenu (callback) {
 }
 
 function hideMenu (callback) {
-
+  
   if (!isVisibleMenu) return
   isVisibleMenu = false
 

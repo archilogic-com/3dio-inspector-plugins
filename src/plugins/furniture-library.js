@@ -26,7 +26,15 @@ function search (value) {
     // ... and update view when ready
     .then(function (results) {
 
-      listTab.updateList(results)
+      var items = results.map(function(item_){
+        return {
+          title: item_.name,
+          thumb: item_.indexImage,
+          furnitureId: item_.id
+        }
+      })
+
+      listTab.setList(items)
 
     })
     // ... or catch errors
@@ -41,7 +49,7 @@ function addToScene (item, position) {
 
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
-  newEntity.setAttribute('io3d-furniture', 'id', item.id)
+  newEntity.setAttribute('io3d-furniture', 'id', item.furnitureId)
   newEntity.setAttribute('position', position.x + ' 0 ' + position.z)
   document.querySelector('a-scene').appendChild(newEntity)
 
@@ -60,11 +68,11 @@ function show () {
 
 }
 
-function hide () {
+function hide (callback) {
 
   if (!isInitialized) return
 
-  listTab.hide()
+  listTab.hide(callback)
 
 }
 

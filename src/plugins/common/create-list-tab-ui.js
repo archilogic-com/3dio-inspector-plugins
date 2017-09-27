@@ -22,7 +22,8 @@ function createListTabUi (args) {
   var dropPlaneEl
 
   var scope = {
-    updateList: updateList,
+    setList: setList,
+    init: init,
     show: show,
     hide: hide,
     searchInputEl: null
@@ -30,7 +31,7 @@ function createListTabUi (args) {
 
   // methods
 
-  function updateList (items) {
+  function setList (items) {
 
     listEl.empty()
 
@@ -54,24 +55,28 @@ function createListTabUi (args) {
       var itemEl = el('<div>', { class: 'io3d-inspector-plugins___list-item' }).appendTo(listEl)
       itemEl.setAttribute('draggable', true)
 
-      var img = el('<img>').appendTo(itemEl)
-      img.addEventListener('load', function (){
-        var ratio = img.width / img.height
-        if (ratio>1) {
-          // landscape
-          img.style.top = ((90 - 90 / ratio) / 2) + 'px'
-          img.style.height = (90 / ratio) + 'px'
-          img.style.width = '90px'
-        } else {
-          // portrait
-          img.style.left = ((90 - 90 * ratio) / 2) + 'px'
-          img.style.width = (90 * ratio) + 'px'
-          img.style.height = '90px'
-        }
-        img.style.opacity = 1
-        itemEl.style.borderColor = 'transparent'
-      })
-      img.src = item.indexImage
+      if (item.thumb) {
+        var img = el('<img>').appendTo(itemEl)
+        img.addEventListener('load', function (){
+          var ratio = img.width / img.height
+          if (ratio>1) {
+            // landscape
+            img.style.top = Math.floor((90 - 90 / ratio) / 2 + 3) + 'px'
+            img.style.left = '3px'
+            img.style.width = '90px'
+            img.style.height = Math.floor(90 / ratio) + 'px'
+          } else {
+            // portrait
+            img.style.top = '3px'
+            img.style.left = Math.floor((90 - 90 * ratio) / 2 + 3) + 'px'
+            img.style.width = Math.floor(90 * ratio) + 'px'
+            img.style.height = '90px'
+          }
+          img.style.opacity = 1
+          itemEl.style.borderColor = 'transparent'
+        })
+        img.src = item.thumb
+      }
 
       itemEl.addEventListener('dragstart', function onItemDragStart(e) {
         if (e.stopPropagation) e.stopPropagation() // stops the browser from redirecting.
@@ -91,7 +96,7 @@ function createListTabUi (args) {
 
   }
 
-  function createUI () {
+  function init () {
 
     tab = createTabUi()
 
@@ -109,18 +114,6 @@ function createListTabUi (args) {
       click: hide
     }).appendTo(headerEl)
 
-    scope.searchInputEl = el('<input>', {
-      id: 'io3d-inspector-plugins___list-tab___search-input',
-      placeholder: 'Search...'
-    }).appendTo(headerEl)
-    scope.searchInputEl.addEventListener('change', function () {
-      onSearchInputCallback(scope.searchInputEl.value)
-    })
-
-    el('<div>', {
-      id: 'io3d-inspector-plugins___list-tab___search-icon',
-    }).appendTo(headerEl)
-
     var listContainerEl = el('<div>', {
       id: 'io3d-inspector-plugins___list-tab___list-container',
     }).appendTo(tab.el)
@@ -135,6 +128,28 @@ function createListTabUi (args) {
     }).appendTo(document.body)
     dropPlaneEl.addEventListener('dragover', onItemDragOver, false)
     dropPlaneEl.addEventListener('drop', onItemDrop, false)
+
+    if (onSearchInputCallback) {
+
+      scope.searchInputEl = el('<input>', {
+        id: 'io3d-inspector-plugins___list-tab___search-input',
+        placeholder: 'Search...'
+      }).appendTo(headerEl)
+      scope.searchInputEl.addEventListener('change', function () {
+        onSearchInputCallback(scope.searchInputEl.value)
+      })
+
+      el('<div>', {
+        id: 'io3d-inspector-plugins___list-tab___search-icon',
+      }).appendTo(headerEl)
+
+      headerEl.style.height = listContainerEl.style.top = '68px'
+
+    } else {
+
+      headerEl.style.height = listContainerEl.style.top = '37px'
+
+    }
 
     el('<div>', {
       id: 'io3d-inspector-plugins___list-tab___drop-plane-info',
@@ -194,13 +209,17 @@ function createListTabUi (args) {
   }
 
   function show (callback) {
-    if (!isInitialized) createUI()
+    if (!isInitialized) init()
     tab.slideIn(function(){
-      setTimeout(function(){
-        scope.searchInputEl.focus()
-        scope.searchInputEl.selectionStart = 10000
-        scope.searchInputEl.selectionEnd = 10000
-      }, 50)
+
+      if (scope.searchInputEl) {
+        setTimeout(function(){
+          scope.searchInputEl.focus()
+          scope.searchInputEl.selectionStart = 10000
+          scope.searchInputEl.selectionEnd = 10000
+        }, 50)
+      }
+
       if (typeof callback === 'function') callback()
     })
   }
