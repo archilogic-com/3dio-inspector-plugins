@@ -1,9 +1,23 @@
 import createListTabUi from './common/create-list-tab-ui.js'
 
+// config
+
 var DEFAULT_SEARCH_VALUE = 'chair'
+
+// export
+
+var scope = {
+  show: show,
+  hide: hide,
+  isVisible: false
+}
+
+// internals
 
 var isInitialized = false
 var listTab
+
+// methods
 
 function init () {
 
@@ -12,7 +26,10 @@ function init () {
     emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
     listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
     onSearchInput: search,
-    onItemDrop: addToScene
+    onItemDrop: addToScene,
+    onHide: function(){
+      scope.isVisible = false
+    }
   })
 
   isInitialized = true
@@ -55,11 +72,14 @@ function addToScene (item, position) {
 
 }
 
-function show () {
-
+function show (callback, animate) {
+  
   if (!isInitialized) init()
 
-  listTab.show()
+  if (scope.isVisible) return
+  scope.isVisible = true
+
+  listTab.show(callback, animate)
 
   if (!listTab.searchInputEl.value) {
     search(DEFAULT_SEARCH_VALUE)
@@ -68,19 +88,17 @@ function show () {
 
 }
 
-function hide (callback) {
+function hide (callback, animate) {
 
   if (!isInitialized) return
 
-  listTab.hide(callback)
+  if (!scope.isVisible) return
+  scope.isVisible = false
+
+  listTab.hide(callback, animate)
 
 }
 
 // expose API
 
-var furnitureLibraryPlugin = {
-  show: show,
-  hide: hide
-}
-
-export default furnitureLibraryPlugin
+export default scope

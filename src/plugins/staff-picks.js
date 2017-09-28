@@ -1,15 +1,30 @@
 import createListTabUi from './common/create-list-tab-ui.js'
 import staffPickItems from './staff-picks/items.js'
 
+// export
+
+var scope = {
+  show: show,
+  hide: hide,
+  isVisible: false
+}
+
+// internal
+
 var isInitialized = false
 var listTab
+
+// method
 
 function init () {
 
   listTab = createListTabUi({
     title: 'Staff Pics',
     listInfo: 'A growing list of models for testing and demo purposes.',
-    onItemDrop: addToScene
+    onItemDrop: addToScene,
+    onHide: function(){
+      scope.isVisible = false
+    }
   })
 
   listTab.init()
@@ -50,27 +65,28 @@ function addToScene (item, position) {
 
 }
 
-function show () {
+function show (callback, animate) {
 
   if (!isInitialized) init()
 
-  listTab.show()
+  if (scope.isVisible) return
+  scope.isVisible = true
+
+  listTab.show(callback, animate)
 
 }
 
-function hide (callback) {
+function hide (callback, animate) {
 
   if (!isInitialized) return
 
-  listTab.hide(callback)
+  if (!scope.isVisible) return
+  scope.isVisible = false
+
+  listTab.hide(callback, animate)
 
 }
 
 // expose API
 
-var staffPicksPlugin = {
-  show: show,
-  hide: hide
-}
-
-export default staffPicksPlugin
+export default scope

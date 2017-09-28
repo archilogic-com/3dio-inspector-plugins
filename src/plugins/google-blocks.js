@@ -1,9 +1,23 @@
 import createListTabUi from './common/create-list-tab-ui.js'
 
+// config
+
 var DEFAULT_SEARCH_VALUE = 'house'
+
+// export
+
+var scope = {
+  show: show,
+  hide: hide,
+  isVisible: false
+}
+
+// internals
 
 var isInitialized = false
 var listTab
+
+// methods
 
 function init () {
 
@@ -12,7 +26,10 @@ function init () {
     emptyList: 'Sorry, no models found ...',
     listInfo: '',
     onSearchInput: search,
-    onItemDrop: addToScene
+    onItemDrop: addToScene,
+    onHide: function(){
+      scope.isVisible = false
+    }
   })
 
   isInitialized = true
@@ -92,11 +109,14 @@ function addToScene (item, position) {
 
 }
 
-function show () {
+function show (callback, animate) {
 
   if (!isInitialized) init()
 
-  listTab.show()
+  if (scope.isVisible) return
+  scope.isVisible = true
+
+  listTab.show(callback, animate)
 
   if (!listTab.searchInputEl.value) {
     search(DEFAULT_SEARCH_VALUE)
@@ -105,19 +125,17 @@ function show () {
 
 }
 
-function hide (callback) {
+function hide (callback, animate) {
 
   if (!isInitialized) return
 
-  listTab.hide(callback)
+  if (!scope.isVisible) return
+  scope.isVisible = false
+
+  listTab.hide(callback, animate)
 
 }
 
 // expose API
 
-var googleBlocksPlugin = {
-  show: show,
-  hide: hide
-}
-
-export default googleBlocksPlugin
+export default scope

@@ -13,6 +13,7 @@ function createListTabUi (args) {
   var emptyList = args.emptyList || '0 results'
   var onSearchInputCallback = args.onSearchInput
   var onItemDropCallback = args.onItemDrop
+  var onHide = args.onHide
 
   // internals
 
@@ -208,7 +209,7 @@ function createListTabUi (args) {
     }, 300)
   }
 
-  function show (callback) {
+  function show (callback, animate) {
     if (!isInitialized) init()
     tab.slideIn(function(){
 
@@ -221,11 +222,12 @@ function createListTabUi (args) {
       }
 
       if (typeof callback === 'function') callback()
-    })
+    }, animate)
   }
 
-  function hide (callback) {
-    tab.slideOut(callback)
+  function hide (callback, animate) {
+    if (typeof onHide === 'function') onHide()
+    tab.slideOut(callback, animate)
   }
 
 // expose API

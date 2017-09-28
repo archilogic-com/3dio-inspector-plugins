@@ -18,39 +18,60 @@ export default function createTabUi () {
 
   // methods
 
-  function slideIn (callback) {
+  function slideIn (callback, animate) {
     
     if (isVisible) return
     isVisible = true
 
-    tabEl.style.opacity = 0
-    tabEl.style.display = 'block'
+    animate = animate !== undefined ? animate : true
 
-    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)'
-    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)'
-    tabEl.style['-webkit-animation-fill-mode'] = 'forwards'
-    tabEl.style['animation-fill-mode'] = 'forwards'
+    if (animate) {
 
-    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500)
+      tabEl.style.opacity = 0
+      tabEl.style.display = 'block'
+
+      tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)'
+      tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)'
+      tabEl.style['-webkit-animation-fill-mode'] = 'forwards'
+      tabEl.style['animation-fill-mode'] = 'forwards'
+
+      if (typeof callback === 'function') setTimeout(function () { callback(); }, 500)
+
+    } else {
+
+      if (typeof callback === 'function') callback()
+
+    }
 
   }
 
-  function slideOut (callback) {
+  function slideOut (callback, animate) {
 
     if (!isVisible) return
     isVisible = false
 
-    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in'
-    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in'
-    tabEl.style['-webkit-animation-fill-mode'] = 'forwards'
-    tabEl.style['animation-fill-mode'] = 'forwards'
+    animate = animate !== undefined ? animate : true
 
-    // remove element
-    setTimeout(function () {
-      tabEl.style.display = 'none'
-    }, 600)
+    if (animate) {
 
-    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300)
+      tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in'
+      tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in'
+      tabEl.style['-webkit-animation-fill-mode'] = 'forwards'
+      tabEl.style['animation-fill-mode'] = 'forwards'
+
+      // remove element
+      setTimeout(function () {
+        tabEl.style.display = 'none'
+      }, 600)
+
+      if (typeof callback === 'function') setTimeout(function () { callback(); }, 300)
+
+    } else {
+
+      if (typeof callback === 'function') callback()
+
+    }
+
 
   }
 

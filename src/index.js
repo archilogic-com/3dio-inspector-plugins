@@ -90,7 +90,7 @@ function init() {
 function show() {
   appendCss()
   pluginManager.show()
-  if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName)
+  if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName, false)
 }
 
 function hide() {

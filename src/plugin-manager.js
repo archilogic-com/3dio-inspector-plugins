@@ -18,7 +18,7 @@ function setPlugins(plugins_) {
 }
 
 function init() {
-  if (isInitialized) return
+
   isInitialized = true
 
   // DOM
@@ -76,24 +76,37 @@ function init() {
 
 }
 
-function showPlugin(name) {
+function showPlugin(name, animate) {
+
+  if (plugins[activePluginName]) console.log('showPlugin', plugins[activePluginName].module.isVisible)
+
   if (activePluginName) {
-    plugins[activePluginName].module.hide()
+    if (name === activePluginName && plugins[activePluginName].module.isVisible) {
+      return
+    } else {
+      plugins[activePluginName].module.hide(null, animate)
+    }
   }
+
   if (name) {
     if (!plugins[name]) {
       console.error('Plugin "'+name+'" not found. Available plugins are: "'+Object.keys(plugins).join('", "')+'"')
+
     } else {
-      plugins[name].module.show()
+      if (!plugins[name].module.isVisible) plugins[name].module.show(null, animate)
+
       activePluginName = name
       hideMenu()
+
     }
   }
+  
 }
 
 function show() {
 
-  init()
+  if (!isInitialized) init()
+
   io3dButtonEl.show()
   
 }

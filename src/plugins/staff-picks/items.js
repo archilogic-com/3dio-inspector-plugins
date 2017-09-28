@@ -22,4 +22,8 @@ export default [{
   thumb: null,
   url: 'https://storage.3d.io/535e624259ee6b0200000484/170725-1421-wujxjb/archilogic_2017-07-25_14-19-02_hn9axa.gz.data3d.buffer',
   format: 'data3d'
+},{
+  thumb: null,
+  url: 'https://storage.3d.io/535e624259ee6b0200000484/170927-2018-a10bpi/archilogic_2017-09-27_20-18-12_GT3EQI.gz.data3d.buffer',
+  format: 'data3d'
 }]
