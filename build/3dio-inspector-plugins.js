@@ -2,9 +2,9 @@
  * @preserve
  * @name 3dio-inspector-plugins
  * @version 0.0.1
- * @date 2017/09/26 19:36
+ * @date 2017/09/28 19:42
  * @branch master
- * @commit 16ad6b4a83d8415854ce4b0e02722c2c9b1c151a
+ * @commit d15ab10ceedc2a4032f2e31d45dbcc64d144381a
  * @description Connects A-Frame Inspector to 3d.io APIs
  * @see https://3d.io
  * @tutorial https://github.com/archilogic-com/3dio-inspector-plugins
@@ -18,9 +18,9 @@
 	(global.io3dInspectorPlugins = factory());
 }(this, (function () { 'use strict';
 
-	var BUILD_DATE='2017/09/26 19:36', GIT_BRANCH = 'master', GIT_COMMIT = '16ad6b4a83d8415854ce4b0e02722c2c9b1c151a'
+	var BUILD_DATE='2017/09/28 19:42', GIT_BRANCH = 'master', GIT_COMMIT = 'd15ab10ceedc2a4032f2e31d45dbcc64d144381a'
 
-	var css = "* {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\nsection {\n  display: block;\n}\nbody {\n  line-height: 1;\n}\nol,\nul {\n  list-style: none;\n}\nblockquote,\nq {\n  quotes: none;\n}\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n  content: '';\n  content: none;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.io3d-inspector-plugins___tab-container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 30px;\n  left: 0;\n  height: 100%;\n  z-index: 100000;\n}\n.io3d-inspector-plugins___tab {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 230px;\n  background-color: #2b2b2b;\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 39px;\n  left: 182px;\n  height: 18px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  letter-spacing: 0px;\n  color: #bcbcbc;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___footer a:hover {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n#io3d-inspector-plugins___furniture-library___header {\n  position: absolute;\n  width: 100%;\n  height: 64px;\n  background-color: #333;\n  top: 0;\n  left: 0;\n}\n#io3d-inspector-plugins___furniture-library___title {\n  position: absolute;\n  width: 100%;\n  height: 36px;\n  line-height: 36px;\n  color: #bcbcbc;\n  padding: 0 0 0 8px;\n  top: 0;\n  left: 0;\n  letter-spacing: 1px;\n}\n#io3d-inspector-plugins___furniture-library___close-button {\n  -webkit-font-smoothing: antialiased;\n  font-family: FontAwesome;\n  font-size: 16px;\n  font-weight: 200;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  line-height: 20px;\n  border-radius: 50%;\n  text-align: center;\n  top: 9px;\n  right: 4px;\n  cursor: pointer;\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___furniture-library___close-button:hover {\n  color: #1faaf2;\n}\n#io3d-inspector-plugins___furniture-library___close-button:before {\n  content: \"\\f00d\";\n}\n#io3d-inspector-plugins___furniture-library___search-input {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  writing-mode: horizontal-tb;\n  -webkit-rtl-ordering: logical;\n  -webkit-border-image: none;\n  font-family: \"Roboto Mono\", Consolas, \"Andale Mono\", Monaco, \"Courier New\", monospace;\n  font-size: 11px;\n  font-weight: normal;\n  letter-spacing: 1px;\n  position: absolute;\n  width: 218px;\n  height: 22px;\n  line-height: 22px;\n  top: 36px;\n  left: 6px;\n  padding: 0 0 0 7px;\n  border-radius: 5px;\n  border: 0;\n  background-color: #222222;\n}\n#io3d-inspector-plugins___furniture-library___search-icon {\n  font-family: FontAwesome;\n  font-size: 12px;\n  position: absolute;\n  width: 22px;\n  height: 22px;\n  line-height: 22px;\n  top: 36px;\n  right: 0;\n  color: #4d4d4d;\n}\n#io3d-inspector-plugins___furniture-library___search-icon:before {\n  content: \"\\f002\";\n}\n#io3d-inspector-plugins___furniture-library___search-results-container {\n  position: absolute;\n  width: 100%;\n  top: 64px;\n  left: 0;\n  bottom: 0;\n  overflow: auto;\n}\n#io3d-inspector-plugins___furniture-library___search-results-info {\n  position: absolute;\n  width: 100%;\n  top: 0px;\n  height: 30px;\n  left: 0;\n}\n#io3d-inspector-plugins___furniture-library___search-results {\n  position: absolute;\n  width: 100%;\n  top: 30px;\n  left: 0;\n  background-color: #2b2b2b;\n}\n#io3d-inspector-plugins___furniture-library___search-results .furniture-search-result-item {\n  display: inline-block;\n  margin: 5px 0 0 5px;\n  position: relative;\n  width: 100px;\n  height: 100px;\n  background-color: rgba(255, 255, 255, 0);\n  -moz-user-select: none;\n  -khtml-user-select: none;\n  -webkit-user-select: none;\n  user-select: none;\n  /* Required to make elements draggable in old WebKit */\n  -khtml-user-drag: element;\n  -webkit-user-drag: element;\n}\n#io3d-inspector-plugins___furniture-library___search-results .furniture-search-result-item img {\n  width: 90%;\n  height: 90%;\n  object-fit: contain;\n}\n#io3d-inspector-plugins___furniture-library___drop-plane {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 230px;\n  height: 100%;\n  background-color: rgba(33, 172, 242, 0.15);\n  border: 2px solid #21acf2;\n  z-index: 100000;\n  opacity: 0;\n  -webkit-transition: opacity 200ms;\n  transition: opacity 200ms;\n}\n#io3d-inspector-plugins___furniture-library___drop-plane-info {\n  width: 100%;\n  height: 100%;\n  line-height: 100vh;\n  text-align: center;\n  color: rgba(33, 172, 242, 0.2);\n  font-size: 68px;\n  font-weight: 400;\n  letter-spacing: 2px;\n}\n";
+	var css = "#io3d-inspector-plugins * {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\n.io3d-inspector-plugins * {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\n.io3d-inspector-plugins___tab-container {\n  position: absolute;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  top: 30px;\n  left: 0;\n  bottom: 0;\n  z-index: 100000;\n}\n.io3d-inspector-plugins___tab {\n  position: absolute;\n  font-size: 12px;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 230px;\n  background-color: #2b2b2b;\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 39px;\n  left: 182px;\n  height: 18px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  letter-spacing: 0px;\n  color: #bcbcbc;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___footer a:hover {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n#io3d-inspector-plugins___list-tab___header {\n  position: absolute;\n  width: 100%;\n  height: 64px;\n  background-color: #333;\n  top: 0;\n  left: 0;\n}\n#io3d-inspector-plugins___list-tab___title {\n  position: absolute;\n  width: 100%;\n  height: 38px;\n  line-height: 38px;\n  color: #bcbcbc;\n  padding: 0 0 0 8px;\n  top: 0;\n  left: 0;\n  letter-spacing: 1px;\n}\n#io3d-inspector-plugins___list-tab___close-button {\n  -webkit-font-smoothing: antialiased;\n  font-family: FontAwesome;\n  font-size: 16px;\n  font-weight: 200;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  line-height: 20px;\n  border-radius: 50%;\n  text-align: center;\n  top: 9px;\n  right: 4px;\n  cursor: pointer;\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___list-tab___close-button:hover {\n  color: #1faaf2;\n}\n#io3d-inspector-plugins___list-tab___close-button:before {\n  content: \"\\f00d\";\n}\n#io3d-inspector-plugins___list-tab___search-input {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  writing-mode: horizontal-tb;\n  -webkit-rtl-ordering: logical;\n  -webkit-border-image: none;\n  font-family: \"Roboto Mono\", Consolas, \"Andale Mono\", Monaco, \"Courier New\", monospace;\n  font-size: 11px;\n  font-weight: normal;\n  letter-spacing: 0px;\n  position: absolute;\n  width: 218px;\n  height: 26px;\n  line-height: 26px;\n  top: 37px;\n  left: 6px;\n  padding: 0 0 0 7px;\n  border-radius: 5px;\n  border: 0;\n  background-color: #222222;\n}\n#io3d-inspector-plugins___list-tab___search-icon {\n  font-family: FontAwesome;\n  font-size: 12px;\n  position: absolute;\n  width: 26px;\n  height: 26px;\n  line-height: 26px;\n  top: 37px;\n  right: 0;\n  color: #4d4d4d;\n}\n#io3d-inspector-plugins___list-tab___search-icon:before {\n  content: \"\\f002\";\n}\n#io3d-inspector-plugins___list-tab___list-container {\n  position: absolute;\n  width: 100%;\n  top: 64px;\n  left: 0;\n  bottom: 0;\n  padding: 0 0 20px 0;\n  overflow: auto;\n}\n#io3d-inspector-plugins___list-tab___list-info {\n  position: relative;\n  display: block;\n  width: 100%;\n}\n#io3d-inspector-plugins___list-tab___list {\n  position: relative;\n  display: block;\n  width: 100%;\n  background-color: #2b2b2b;\n  padding: 4px 0 0 4px;\n}\n#io3d-inspector-plugins___list-tab___list___info {\n  margin: 10px 10px 10px 10px;\n  color: #bcbcbc;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item {\n  display: inline-block;\n  margin: 4px 0 0 4px;\n  position: relative;\n  width: 98px;\n  height: 98px;\n  background-color: rgba(255, 255, 255, 0);\n  -moz-user-select: none;\n  -webkit-user-select: none;\n  user-select: none;\n  /* Required to make elements draggable in old WebKit */\n  -khtml-user-drag: element;\n  -webkit-user-drag: element;\n  border: 1px dotted rgba(255, 255, 255, 0.4);\n  border-radius: 3px;\n  overflow: hidden;\n  -webkit-transition: border-color 1500ms;\n  transition: border-color 1500ms;\n  cursor: move;\n  /* fallback if grab cursor is unsupported */\n  cursor: grab;\n  cursor: -moz-grab;\n  cursor: -webkit-grab;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item:active {\n  cursor: grabbing;\n  cursor: -moz-grabbing;\n  cursor: -webkit-grabbing;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item:hover {\n  background-color: #333;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item img {\n  position: absolute;\n  opacity: 0;\n  -webkit-transition: opacity 1500ms;\n  transition: opacity 1500ms;\n}\n#io3d-inspector-plugins___list-tab___drop-plane {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 230px;\n  height: 100%;\n  background-color: rgba(33, 172, 242, 0.15);\n  border: 2px solid #21acf2;\n  z-index: 100000;\n  opacity: 0;\n  -webkit-transition: opacity 200ms;\n  transition: opacity 200ms;\n}\n#io3d-inspector-plugins___list-tab___drop-plane-info {\n  width: 100%;\n  height: 100%;\n  line-height: 100vh;\n  text-align: center;\n  color: rgba(33, 172, 242, 0.2);\n  font-size: 68px;\n  font-weight: 400;\n  letter-spacing: 2px;\n}\n";
 
 	// basic element utils for convenience inspired by jquery API
 
@@ -218,7 +218,7 @@
 	}
 
 	function init$1() {
-	  if (isInitialized) return
+
 	  isInitialized = true;
 
 	  // DOM
@@ -227,6 +227,7 @@
 	  
 	  io3dButtonEl = el('<div>', {
 	    id: 'io3d-inspector-plugins___3dio-button',
+	    class: 'io3d-inspector-plugins',
 	    html: svg3dioLogo,
 	    click: toggleMenu
 	  }).appendTo(document.body);
@@ -234,7 +235,8 @@
 	  // launcher menu
 
 	  menuContainerEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___plugins-menu'
+	    id: 'io3d-inspector-plugins___plugins-menu',
+	    class: 'io3d-inspector-plugins'
 	  }).appendTo(document.body);
 
 	  menuEl = el('<div>', {
@@ -274,31 +276,45 @@
 
 	}
 
-	function showPlugin(name) {
+	function showPlugin(name, animate) {
+
+	  if (plugins[activePluginName]) console.log('showPlugin', plugins[activePluginName].module.isVisible);
+
 	  if (activePluginName) {
-	    plugins[activePluginName].module.hide();
+	    if (name === activePluginName && plugins[activePluginName].module.isVisible) {
+	      return
+	    } else {
+	      plugins[activePluginName].module.hide(null, animate);
+	    }
 	  }
+
 	  if (name) {
 	    if (!plugins[name]) {
 	      console.error('Plugin "'+name+'" not found. Available plugins are: "'+Object.keys(plugins).join('", "')+'"');
+
 	    } else {
-	      plugins[name].module.show();
+	      if (!plugins[name].module.isVisible) plugins[name].module.show(null, animate);
+
 	      activePluginName = name;
 	      hideMenu();
+
 	    }
 	  }
+	  
 	}
 
-	function show() {
+	function show$1() {
 
-	  init$1();
+	  if (!isInitialized) init$1();
+
 	  io3dButtonEl.show();
 	  
 	}
 
-	function hide() {
+	function hide$1(callback) {
 
 	  io3dButtonEl.hide();
+	  if (activePluginName) plugins[activePluginName].module.hide(callback);
 	  hideMenu();
 
 	}
@@ -329,7 +345,7 @@
 	}
 
 	function hideMenu (callback) {
-
+	  
 	  if (!isVisibleMenu) return
 	  isVisibleMenu = false;
 
@@ -353,8 +369,8 @@
 
 	var pluginManager = {
 	  setPlugins: setPlugins,
-	  show: show,
-	  hide: hide,
+	  show: show$1,
+	  hide: hide$1,
 	  showPlugin: showPlugin
 	};
 
@@ -367,7 +383,7 @@
 	  // DOM
 
 	  var tabContainerEl = el('<div>',{
-	    class: 'io3d-inspector-plugins___tab-container'
+	    class: 'io3d-inspector-plugins io3d-inspector-plugins___tab-container',
 	  }).appendTo(document.body);
 
 	  var tabEl = el('<div>',{
@@ -376,39 +392,60 @@
 
 	  // methods
 
-	  function slideIn (callback) {
+	  function slideIn (callback, animate) {
 	    
 	    if (isVisible) return
 	    isVisible = true;
 
-	    tabEl.style.opacity = 0;
-	    tabEl.style.display = 'block';
+	    animate = animate !== undefined ? animate : true;
 
-	    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
-	    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
-	    tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
-	    tabEl.style['animation-fill-mode'] = 'forwards';
+	    if (animate) {
 
-	    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500);
+	      tabEl.style.opacity = 0;
+	      tabEl.style.display = 'block';
+
+	      tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
+	      tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-in cubic-bezier(0.2, 0.80, 0.5, 1)';
+	      tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
+	      tabEl.style['animation-fill-mode'] = 'forwards';
+
+	      if (typeof callback === 'function') setTimeout(function () { callback(); }, 500);
+
+	    } else {
+
+	      if (typeof callback === 'function') callback();
+
+	    }
 
 	  }
 
-	  function slideOut (callback) {
+	  function slideOut (callback, animate) {
 
 	    if (!isVisible) return
 	    isVisible = false;
 
-	    tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
-	    tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
-	    tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
-	    tabEl.style['animation-fill-mode'] = 'forwards';
+	    animate = animate !== undefined ? animate : true;
 
-	    // remove element
-	    setTimeout(function () {
-	      tabEl.style.display = 'none';
-	    }, 600);
+	    if (animate) {
 
-	    if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300);
+	      tabEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
+	      tabEl.style['animation'] = '600ms io3d-inspector-plugins___tab___slide-out ease-in';
+	      tabEl.style['-webkit-animation-fill-mode'] = 'forwards';
+	      tabEl.style['animation-fill-mode'] = 'forwards';
+
+	      // remove element
+	      setTimeout(function () {
+	        tabEl.style.display = 'none';
+	      }, 600);
+
+	      if (typeof callback === 'function') setTimeout(function () { callback(); }, 300);
+
+	    } else {
+
+	      if (typeof callback === 'function') callback();
+
+	    }
+
 
 	  }
 
@@ -462,21 +499,292 @@
 
 	// internals
 
-	var PRESET_SEARCH = 'shelf';
+	function createListTabUi (args) {
+
+	  // API
+
+	  var title = args.title;
+	  var listInfo = args.listInfo;
+	  var emptyList = args.emptyList || '0 results';
+	  var onSearchInputCallback = args.onSearchInput;
+	  var onItemDropCallback = args.onItemDrop;
+	  var onHide = args.onHide;
+
+	  // internals
+
+	  var isInitialized = false;
+	  var tab;
+	  var listEl;
+	  var dropPlaneEl;
+
+	  var scope = {
+	    setList: setList,
+	    init: init,
+	    show: show,
+	    hide: hide,
+	    searchInputEl: null
+	  };
+
+	  // methods
+
+	  function setList (items) {
+
+	    listEl.empty();
+
+	    if (!items.length) {
+	      var emptyEl =  el('<div>', {
+	        id: 'io3d-inspector-plugins___list-tab___list__info',
+	      }).appendTo(listEl);
+	      emptyEl.append(emptyList);
+	      return
+	    }
+
+	    if (listInfo) {
+	      var listInfoEl = el('<div>', {
+	        id: 'io3d-inspector-plugins___list-tab___list___info',
+	      }).appendTo(listEl);
+	      listInfoEl.append(listInfo);
+	    }
+
+	    items.forEach(function(item){
+
+	      var itemEl = el('<div>', { class: 'io3d-inspector-plugins___list-item' }).appendTo(listEl);
+	      itemEl.setAttribute('draggable', true);
+
+	      if (item.thumb) {
+	        var img = el('<img>').appendTo(itemEl);
+	        img.addEventListener('load', function (){
+	          var ratio = img.width / img.height;
+	          if (ratio>1) {
+	            // landscape
+	            img.style.top = Math.floor((90 - 90 / ratio) / 2 + 3) + 'px';
+	            img.style.left = '3px';
+	            img.style.width = '90px';
+	            img.style.height = Math.floor(90 / ratio) + 'px';
+	          } else {
+	            // portrait
+	            img.style.top = '3px';
+	            img.style.left = Math.floor((90 - 90 * ratio) / 2 + 3) + 'px';
+	            img.style.width = Math.floor(90 * ratio) + 'px';
+	            img.style.height = '90px';
+	          }
+	          img.style.opacity = 1;
+	          itemEl.style.borderColor = 'transparent';
+	        });
+	        img.src = item.thumb;
+	      }
+
+	      itemEl.addEventListener('dragstart', function onItemDragStart(e) {
+	        if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+	        fadeInDropPlane();
+	        e.dataTransfer.effectAllowed = 'move';
+	        e.dataTransfer.setData('text/plain', JSON.stringify(item));
+	        return false
+	      }, false);
+
+	      itemEl.addEventListener('dragend', function onItemDragEnd(e) {
+	        if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+	        fadeOutDropPlane();
+	        return false
+	      }, false);
+
+	    });
+
+	  }
+
+	  function init () {
+
+	    tab = createTabUi();
+
+	    var headerEl = el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___header',
+	    }).appendTo(tab.el);
+
+	    el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___title',
+	      html: title
+	    }).appendTo(headerEl);
+
+	    el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___close-button',
+	      click: hide
+	    }).appendTo(headerEl);
+
+	    var listContainerEl = el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___list-container',
+	    }).appendTo(tab.el);
+
+	    listEl = el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___list',
+	    }).appendTo(listContainerEl);
+
+	    dropPlaneEl = el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___drop-plane',
+	      style: 'display: none;'
+	    }).appendTo(document.body);
+	    dropPlaneEl.addEventListener('dragover', onItemDragOver, false);
+	    dropPlaneEl.addEventListener('drop', onItemDrop, false);
+
+	    if (onSearchInputCallback) {
+
+	      scope.searchInputEl = el('<input>', {
+	        id: 'io3d-inspector-plugins___list-tab___search-input',
+	        placeholder: 'Search...'
+	      }).appendTo(headerEl);
+	      scope.searchInputEl.addEventListener('change', function () {
+	        onSearchInputCallback(scope.searchInputEl.value);
+	      });
+
+	      el('<div>', {
+	        id: 'io3d-inspector-plugins___list-tab___search-icon',
+	      }).appendTo(headerEl);
+
+	      headerEl.style.height = listContainerEl.style.top = '68px';
+
+	    } else {
+
+	      headerEl.style.height = listContainerEl.style.top = '37px';
+
+	    }
+
+	    el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___drop-plane-info',
+	      text: 'drop here'
+	    }).appendTo(dropPlaneEl);
+
+	    isInitialized = true;
+
+	  }
+
+	  function onItemDragOver(e) {
+
+	    if (e.preventDefault) e.preventDefault(); // Necessary. Allows us to drop.
+
+	    e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+	    return false
+
+	  }
+
+	  function onItemDrop (e) {
+
+	    if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting.
+	    if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
+
+	    // hide dropPlaneEl
+	    fadeOutDropPlane();
+
+	    // get picking point
+	    var position = pickPointOnGroundPlane({
+	      x: e.x,
+	      y: e.y,
+	      canvas: AFRAME.scenes[0].canvas,
+	      camera: AFRAME.INSPECTOR.EDITOR_CAMERA
+	    });
+
+	    // get item data
+	    var item = JSON.parse(e.dataTransfer.getData('text/plain'));
+
+	    onItemDropCallback(item, position);
+
+	    return false
+	  }
+
+	  function fadeInDropPlane () {
+	    dropPlaneEl.style.display = 'block';
+	    setTimeout(function(){
+	      dropPlaneEl.style.opacity = 1;
+	    }, 50);
+	  }
+
+	  function fadeOutDropPlane () {
+	    dropPlaneEl.style.opacity = 0;
+	    setTimeout(function(){
+	      dropPlaneEl.style.display = 'none';
+	    }, 300);
+	  }
+
+	  function show (callback, animate) {
+	    if (!isInitialized) init();
+	    tab.slideIn(function(){
+
+	      if (scope.searchInputEl) {
+	        setTimeout(function(){
+	          scope.searchInputEl.focus();
+	          scope.searchInputEl.selectionStart = 10000;
+	          scope.searchInputEl.selectionEnd = 10000;
+	        }, 50);
+	      }
+
+	      if (typeof callback === 'function') callback();
+	    }, animate);
+	  }
+
+	  function hide (callback, animate) {
+	    if (typeof onHide === 'function') onHide();
+	    tab.slideOut(callback, animate);
+	  }
+
+	// expose API
+
+	  return scope
+
+	}
+
+	// config
+
+	var DEFAULT_SEARCH_VALUE = 'chair';
+
+	// export
+
+	var scope = {
+	  show: show$2,
+	  hide: hide$2,
+	  isVisible: false
+	};
+
+	// internals
 
 	var isInitialized$1 = false;
-	var tab;
-	var searchResultsEl;
-	var dropPlaneEl;
-	var searchInputEl;
+	var listTab;
 
+	// methods
+
+	function init$2 () {
+
+	  listTab = createListTabUi({
+	    title: 'Furniture Library',
+	    emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
+	    listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
+	    onSearchInput: search,
+	    onItemDrop: addToScene,
+	    onHide: function(){
+	      scope.isVisible = false;
+	    }
+	  });
+
+	  isInitialized$1 = true;
+
+	}
 
 	function search (value) {
 
 	  io3d.furniture
-	    .search(value, {limit: 50})
+	    .search(value, {limit: 150})
 	    // ... and update view when ready
-	    .then(updateSearchResultsUi)
+	    .then(function (results) {
+
+	      var items = results.map(function(item_){
+	        return {
+	          title: item_.name,
+	          thumb: item_.indexImage,
+	          furnitureId: item_.id
+	        }
+	      });
+
+	      listTab.setList(items);
+
+	    })
 	    // ... or catch errors
 	    .catch(function (error) {
 	      console.error(error);
@@ -485,201 +793,319 @@
 
 	}
 
-	function updateSearchResultsUi (items) {
-
-	  searchResultsEl.empty();
-
-	  if (!items.length) searchResultsEl.text('0 results');
-	  
-	  items.forEach(function(item){
-
-	    var itemEl = el('<div>', { class: 'furniture-search-result-item' }).appendTo(searchResultsEl);
-	    itemEl.setAttribute('draggable', true);
-
-	    el('<img>',{ src: item.indexImage }).appendTo(itemEl);
-
-	    itemEl.addEventListener('dragstart', function onFurnitureItemDragStart(e) {
-	      if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
-	      fadeInDropPlane();
-	      e.dataTransfer.effectAllowed = 'move';
-	      e.dataTransfer.setData('text/plain', item.id);
-	      return false
-	    }, false);
-
-	    itemEl.addEventListener('dragend', function onFurnitureItemDragEnd(e) {
-	      if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
-	      fadeOutDropPlane();
-	      return false
-	    }, false);
-
-	  });
-
-	}
-
-	function createUI () {
-
-	  var mainEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___main-el'
-	  }).appendTo(document.body);
-
-	  tab = createTabUi();
-
-	  var headerEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___header',
-	  }).appendTo(tab.el);
-
-	  el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___title',
-	    html: 'Furniture Library'
-	  }).appendTo(headerEl);
-
-	  el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___close-button',
-	    //text: 'X',
-	    click: hide$1
-	  }).appendTo(headerEl);
-
-	  searchInputEl = el('<input>', {
-	    id: 'io3d-inspector-plugins___furniture-library___search-input',
-	    value: PRESET_SEARCH
-	  }).appendTo(headerEl);
-	  searchInputEl.addEventListener('change', function () {
-	    search(searchInputEl.value);
-	  });
-
-	  el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___search-icon',
-	  }).appendTo(headerEl);
-
-	  var searchResultsContainerEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___search-results-container',
-	  }).appendTo(tab.el);
-
-	  var searchResultsInfoEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___search-results-info',
-	  }).appendTo(searchResultsContainerEl);
-
-	  searchResultsEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___search-results',
-	  }).appendTo(searchResultsContainerEl);
-
-	  dropPlaneEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___drop-plane',
-	    style: 'display: none;'
-	  }).appendTo(document.body);
-	  dropPlaneEl.addEventListener('dragover', onFurnitureItemDragOver, false);
-	  dropPlaneEl.addEventListener('drop', onFurnitureItemDrop, false);
-
-	  var dropPlaneInfoEl = el('<div>', {
-	    id: 'io3d-inspector-plugins___furniture-library___drop-plane-info',
-	    text: 'drop here'
-	  }).appendTo(dropPlaneEl);
-
-	  search(PRESET_SEARCH);
-
-	  isInitialized$1 = true;
-
-	}
-
-	function onFurnitureItemDragOver(e) {
-
-	  if (e.preventDefault) e.preventDefault(); // Necessary. Allows us to drop.
-
-	  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
-	  return false
-
-	}
-
-	function onFurnitureItemDrop (e) {
-
-	  if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting.
-	  if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
-
-	  // hide dropPlaneEl
-	  fadeOutDropPlane();
-
-	  // get picking point
-	  var position = pickPointOnGroundPlane({
-	    x: e.x,
-	    y: e.y,
-	    canvas: AFRAME.scenes[0].canvas,
-	    camera: AFRAME.INSPECTOR.EDITOR_CAMERA
-	  });
-
-	  // get furnitureId
-	  var furnitureId = e.dataTransfer.getData('text/plain');
+	function addToScene (item, position) {
 
 	  // add new entity to scene
 	  var newEntity = document.createElement('a-entity');
-	  newEntity.setAttribute('io3d-furniture', 'id', furnitureId);
+	  newEntity.setAttribute('io3d-furniture', 'id', item.furnitureId);
 	  newEntity.setAttribute('position', position.x + ' 0 ' + position.z);
 	  document.querySelector('a-scene').appendChild(newEntity);
 
-	  return false
 	}
 
-	function fadeInDropPlane () {
-	  dropPlaneEl.style.display = 'block';
-	  setTimeout(function(){
-	    dropPlaneEl.style.opacity = 1;
-	  }, 50);
+	function show$2 (callback, animate) {
+	  
+	  if (!isInitialized$1) init$2();
+
+	  if (scope.isVisible) return
+	  scope.isVisible = true;
+
+	  listTab.show(callback, animate);
+
+	  if (!listTab.searchInputEl.value) {
+	    search(DEFAULT_SEARCH_VALUE);
+	    listTab.searchInputEl.value = DEFAULT_SEARCH_VALUE;
+	  }
+
 	}
 
-	function fadeOutDropPlane () {
-	  dropPlaneEl.style.opacity = 0;
-	  setTimeout(function(){
-	    dropPlaneEl.style.display = 'none';
-	  }, 300);
+	function hide$2 (callback, animate) {
+
+	  if (!isInitialized$1) return
+
+	  if (!scope.isVisible) return
+	  scope.isVisible = false;
+
+	  listTab.hide(callback, animate);
+
 	}
 
-	function show$1 (callback) {
-	  if (!isInitialized$1) createUI();
-	  tab.slideIn(function(){
-	    setTimeout(function(){
-	      searchInputEl.focus();
-	      searchInputEl.selectionStart = 10000;
-	      searchInputEl.selectionEnd = 10000;
-	    }, 10);
-	    if (typeof callback === 'function') callback();
-	  });
-	  return furnitureLibraryPlugin
-	}
+	// config
 
-	function hide$1 (callback) {
-	  tab.slideOut(callback);
-	  return furnitureLibraryPlugin
-	}
+	var DEFAULT_SEARCH_VALUE$1 = 'house';
 
-	// expose API
+	// export
 
-	var furnitureLibraryPlugin = {
-	  show: show$1,
-	  hide: hide$1
+	var scope$1 = {
+	  show: show$3,
+	  hide: hide$3,
+	  isVisible: false
 	};
+
+	// internals
+
+	var isInitialized$2 = false;
+	var listTab$1;
+
+	// methods
+
+	function init$3 () {
+
+	  listTab$1 = createListTabUi({
+	    title: 'Google Blocks',
+	    emptyList: 'Sorry, no models found ...',
+	    listInfo: '',
+	    onSearchInput: search$1,
+	    onItemDrop: addToScene$1,
+	    onHide: function(){
+	      scope$1.isVisible = false;
+	    }
+	  });
+
+	  isInitialized$2 = true;
+
+	}
+
+	function callSearchApi(offset, value) {
+	  return fetch('https://us-central1-gblock-api.cloudfunctions.net/search?limit=10&offset='+offset+'&query='+value).then(function (response) {
+	    return response.json()
+	  })
+	}
+
+	function search$1 (value, offset) {
+
+	  Promise.all([
+	    // google has a limit fo max 10 result per call :/
+	    // so we do 3 api calls and merge the results into one
+	    callSearchApi(1, value),
+	    callSearchApi(11, value),
+	    callSearchApi(21, value)
+	  ]).then(function(results){
+	    return results[0].items.concat(results[1].items).concat(results[2].items)
+	  }).then(function (results) {
+
+	    var items = results.map(function(item_){
+	      return {
+	        title: item_.title,
+	        thumb: item_.smallImage || item_.largeImage,
+	        url: item_.url,
+	        author: item_.author
+	      }
+	    });
+
+	    listTab$1.setList(items);
+
+	  }).catch(function (error) {
+	    console.error(error);
+	    io3d.utils.ui.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2));
+	  });
+
+	}
+
+	function addToScene$1 (item, position) {
+
+	  var uiMessage = io3d.utils.ui.message('Loading glTF...', 0);
+
+	  // add new entity to scene
+	  var newEntity = document.createElement('a-entity');
+
+	  newEntity.addEventListener('model-loaded', function(event){
+
+	    uiMessage.close();
+	    io3d.utils.ui.message.success('Loaded Model: <a href="'+item.url+'" target="_blank">'+item.url+'</a>');
+
+	    // center model to picking position
+	    var bb = new THREE.Box3().setFromObject(event.detail.model); // bounding box
+	    var size = new THREE.Vector3( Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
+	    position.set(
+	      position.x - bb.min.x - size.x/2,
+	      -bb.min.y,
+	      position.z - bb.min.z - size.z/2
+	    );
+
+	    newEntity.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
+
+	  }, { once: true });
+
+	  newEntity.addEventListener('model-error', function(event){
+
+	    uiMessage.close();
+	    io3d.utils.ui.message.error('Sorry: '+event.detail.message+'<br/><a href="'+item.url+'" target="_blank">'+item.url+'</a>');
+
+	  }, { once: true });
+
+	  newEntity.setAttribute('gblock', item.url);
+	  document.querySelector('a-scene').appendChild(newEntity);
+
+	}
+
+	function show$3 (callback, animate) {
+
+	  if (!isInitialized$2) init$3();
+
+	  if (scope$1.isVisible) return
+	  scope$1.isVisible = true;
+
+	  listTab$1.show(callback, animate);
+
+	  if (!listTab$1.searchInputEl.value) {
+	    search$1(DEFAULT_SEARCH_VALUE$1);
+	    listTab$1.searchInputEl.value = DEFAULT_SEARCH_VALUE$1;
+	  }
+
+	}
+
+	function hide$3 (callback, animate) {
+
+	  if (!isInitialized$2) return
+
+	  if (!scope$1.isVisible) return
+	  scope$1.isVisible = false;
+
+	  listTab$1.hide(callback, animate);
+
+	}
+
+	var staffPickItems = [{
+	  thumb: null,
+	  url: 'https://storage.3d.io/archilogic/sample-models/cube-with-texture/data3d/cube-with-texture.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2056-hp86we/archilogic_2017-09-18_20-56-43_B4LLEX.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2106-0sr2cn/9fd87fec-8bdd-4bc1-b9ba-bbfc47d08008.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170903-1554-hl8t6r/archilogic_2017-09-03_15-47-13_dkhZ1I.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/bake/2017-07-10_22-52-44_4jn7em/regular/lighting.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170725-1421-wujxjb/archilogic_2017-07-25_14-19-02_hn9axa.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  thumb: null,
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170927-2018-a10bpi/archilogic_2017-09-27_20-18-12_GT3EQI.gz.data3d.buffer',
+	  format: 'data3d'
+	}];
+
+	// export
+
+	var scope$2 = {
+	  show: show$4,
+	  hide: hide$4,
+	  isVisible: false
+	};
+
+	// internal
+
+	var isInitialized$3 = false;
+	var listTab$2;
+
+	// method
+
+	function init$4 () {
+
+	  listTab$2 = createListTabUi({
+	    title: 'Staff Pics',
+	    listInfo: 'A growing list of models for testing and demo purposes.',
+	    onItemDrop: addToScene$2,
+	    onHide: function(){
+	      scope$2.isVisible = false;
+	    }
+	  });
+
+	  listTab$2.init();
+
+	  listTab$2.setList(staffPickItems);
+
+	  isInitialized$3 = true;
+
+	}
+
+	function addToScene$2 (item, position) {
+
+	  // add new entity to scene
+	  var newEntity = document.createElement('a-entity');
+
+	  newEntity.addEventListener('model-loaded', function(event){
+
+	    // center model to picking position
+	    var bb = new THREE.Box3().setFromObject(event.detail.model); // bounding box
+	    var size = new THREE.Vector3( Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
+	    position.set(
+	      position.x - bb.min.x - size.x/2,
+	      -bb.min.y,
+	      position.z - bb.min.z - size.z/2
+	    );
+
+	    newEntity.setAttribute('position', position.x + ' 0 ' + position.z);
+
+	  }, { once: true });
+
+	  if (item.format === 'data3d') {
+	    newEntity.setAttribute('io3d-data3d', 'url', item.url);
+	  } else {
+	    io3d.utils.ui.message.error('Error: Unknown model format: '+item.format);
+	  }
+
+	  document.querySelector('a-scene').appendChild(newEntity);
+
+	}
+
+	function show$4 (callback, animate) {
+
+	  if (!isInitialized$3) init$4();
+
+	  if (scope$2.isVisible) return
+	  scope$2.isVisible = true;
+
+	  listTab$2.show(callback, animate);
+
+	}
+
+	function hide$4 (callback, animate) {
+
+	  if (!isInitialized$3) return
+
+	  if (!scope$2.isVisible) return
+	  scope$2.isVisible = false;
+
+	  listTab$2.hide(callback, animate);
+
+	}
 
 	// plugin manager & menu
 	// plugins
-	//import googleBlocks from './plugins/google-blocks.js'
-
 	var PLUGINS = {
 	  // name
 	  furnitureLibrary: {
 	    // ui
 	    displayTitle: '🏠&nbsp;&nbsp;furniture library',
 	    // access
-	    module: furnitureLibraryPlugin
+	    module: scope
+	  },
+	  googleBlocks: {
+	    displayTitle: '🥑&nbsp;&nbsp;google blocks',
+	    module: scope$1
+	  },
+	  staffPicks: {
+	    displayTitle: '✨&nbsp;&nbsp;staff picks',
+	    module: scope$2
 	  }
-	  //googleBlocks: {
-	  //  displayTitle: '🥑&nbsp;&nbsp;google blocks',
-	  //  module: googleBlocks
-	  //}
 	};
 
-	var initialPluginName = null;
+	window.io3d.aFrame.activePluginName = null;
 
 	function setInitialPlugin (name) {
-	  initialPluginName = name;
+	  window.io3d.aFrame.activePluginName = name;
 	}
 
 	// check dependencies
@@ -695,10 +1121,20 @@
 	}
 
 	// prevents 3dio lib from loading plugins (ie in dev mode)
-	  window.io3d.aFrame.pluginsLoaded = true;
+	window.io3d.aFrame.pluginsLoaded = true;
 
 	// add css to page
-	el('<style>', {media: 'screen', text: css}).appendTo(document.head);
+	var cssEl = el('<style>',{
+	  id: 'io3d-inspector-plugins___css',
+	  media: 'screen',
+	  text: css
+	});
+	function appendCss() {
+	  cssEl.appendTo(document.head);
+	}
+	function detachCss() {
+	  document.head.removeChild(cssEl);
+	}
 
 	// initializes launcher with plugins
 	pluginManager.setPlugins(PLUGINS);
@@ -709,12 +1145,36 @@
 	  init();
 	} else {
 	  // initialize on inspector ready event
-	  window.addEventListener('inspector-loaded', init);
+	  window.addEventListener('inspector-loaded', init, { once:true });
 	}
 
 	function init() {
+
+	  if (typeof AFRAME.INSPECTOR.on !== 'function') {
+	    console.warn('3dio.js: 3d.io inspector plugins require A-Frame version 0.7.0 or higher.');
+
+	  } else {
+
+	    if (AFRAME.INSPECTOR.opened) show();
+	    AFRAME.INSPECTOR.on('inspectormodechanged', function(isOpen){
+	      isOpen ? show() : hide();
+	    });
+
+	  }
+
+	}
+
+	function show() {
+	  appendCss();
 	  pluginManager.show();
-	  if (initialPluginName) pluginManager.showPlugin(initialPluginName);
+	  if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName, false);
+	}
+
+	function hide() {
+	  setInitialPlugin(null);
+	  pluginManager.hide(function() {
+	    detachCss();
+	  });
 	}
 
 	// expose API
