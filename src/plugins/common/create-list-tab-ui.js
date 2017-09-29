@@ -37,7 +37,7 @@ function createListTabUi (args) {
     listEl.empty()
 
     if (!items.length) {
-      var emptyEl =  el('<div>', {
+      var emptyEl = el('<div>', {
         id: 'io3d-inspector-plugins___list-tab___list__info',
       }).appendTo(listEl)
       emptyEl.append(emptyList)
@@ -51,16 +51,16 @@ function createListTabUi (args) {
       listInfoEl.append(listInfo)
     }
 
-    items.forEach(function(item){
+    items.forEach(function (item) {
 
-      var itemEl = el('<div>', { class: 'io3d-inspector-plugins___list-item' }).appendTo(listEl)
+      var itemEl = el('<div>', {class: 'io3d-inspector-plugins___list-item'}).appendTo(listEl)
       itemEl.setAttribute('draggable', true)
 
       if (item.thumb) {
         var img = el('<img>').appendTo(itemEl)
-        img.addEventListener('load', function (){
+        img.addEventListener('load', function () {
           var ratio = img.width / img.height
-          if (ratio>1) {
+          if (ratio > 1) {
             // landscape
             img.style.top = Math.floor((90 - 90 / ratio) / 2 + 3) + 'px'
             img.style.left = '3px'
@@ -79,7 +79,7 @@ function createListTabUi (args) {
         img.src = item.thumb
       }
 
-      itemEl.addEventListener('dragstart', function onItemDragStart(e) {
+      itemEl.addEventListener('dragstart', function onItemDragStart (e) {
         if (e.stopPropagation) e.stopPropagation() // stops the browser from redirecting.
         fadeInDropPlane()
         e.dataTransfer.effectAllowed = 'move'
@@ -87,7 +87,7 @@ function createListTabUi (args) {
         return false
       }, false)
 
-      itemEl.addEventListener('dragend', function onItemDragEnd(e) {
+      itemEl.addEventListener('dragend', function onItemDragEnd (e) {
         if (e.stopPropagation) e.stopPropagation() // stops the browser from redirecting.
         fadeOutDropPlane()
         return false
@@ -161,7 +161,7 @@ function createListTabUi (args) {
 
   }
 
-  function onItemDragOver(e) {
+  function onItemDragOver (e) {
 
     if (e.preventDefault) e.preventDefault() // Necessary. Allows us to drop.
 
@@ -197,24 +197,24 @@ function createListTabUi (args) {
 
   function fadeInDropPlane () {
     dropPlaneEl.style.display = 'block'
-    setTimeout(function(){
+    setTimeout(function () {
       dropPlaneEl.style.opacity = 1
     }, 50)
   }
 
   function fadeOutDropPlane () {
     dropPlaneEl.style.opacity = 0
-    setTimeout(function(){
+    setTimeout(function () {
       dropPlaneEl.style.display = 'none'
     }, 300)
   }
 
   function show (callback, animate) {
     if (!isInitialized) init()
-    tab.slideIn(function(){
+    tab.slideIn(function () {
 
       if (scope.searchInputEl) {
-        setTimeout(function(){
+        setTimeout(function () {
           scope.searchInputEl.focus()
           scope.searchInputEl.selectionStart = 10000
           scope.searchInputEl.selectionEnd = 10000
