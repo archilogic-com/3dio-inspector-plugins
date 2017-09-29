@@ -22,7 +22,7 @@ function init () {
     title: 'Staff Pics',
     listInfo: 'A growing list of models for testing and demo purposes.',
     onItemDrop: addToScene,
-    onHide: function(){
+    onHide: function () {
       scope.isVisible = false
     }
   })
@@ -40,25 +40,25 @@ function addToScene (item, position) {
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
 
-  newEntity.addEventListener('model-loaded', function(event){
+  newEntity.addEventListener('model-loaded', function (event) {
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
-    var size = new THREE.Vector3( Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
+    var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
     position.set(
-      position.x - bb.min.x - size.x/2,
+      position.x - bb.min.x - size.x / 2,
       -bb.min.y,
-      position.z - bb.min.z - size.z/2
+      position.z - bb.min.z - size.z / 2
     )
 
     newEntity.setAttribute('position', position.x + ' 0 ' + position.z)
 
-  }, { once: true })
+  }, {once: true})
 
   if (item.format === 'data3d') {
     newEntity.setAttribute('io3d-data3d', 'url', item.url)
   } else {
-    io3d.utils.ui.message.error('Error: Unknown model format: '+item.format)
+    io3d.utils.ui.message.error('Error: Unknown model format: ' + item.format)
   }
 
   document.querySelector('a-scene').appendChild(newEntity)

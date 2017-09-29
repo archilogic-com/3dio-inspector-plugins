@@ -13,18 +13,18 @@ var plugins = {}
 
 // methods
 
-function setPlugins(plugins_) {
+function setPlugins (plugins_) {
   plugins = plugins_
 }
 
-function init() {
+function init () {
 
   isInitialized = true
 
   // DOM
 
   // 3d.io button in action bar
-  
+
   io3dButtonEl = el('<div>', {
     id: 'io3d-inspector-plugins___3dio-button',
     class: 'io3d-inspector-plugins',
@@ -55,7 +55,7 @@ function init() {
     click: hideMenu
   }).appendTo(headerEl)
 
-  Object.keys(plugins).forEach(function(name){
+  Object.keys(plugins).forEach(function (name) {
     var pluginButton = el('<div>', {
       id: 'io3d-inspector-plugins___plugins-menu___button',
       html: plugins[name].displayTitle,
@@ -63,7 +63,7 @@ function init() {
         showPlugin(name)
       }
     })
-    pluginButton.addEventListener('click', function(){
+    pluginButton.addEventListener('click', function () {
 
     })
     menuEl.append(pluginButton)
@@ -76,7 +76,7 @@ function init() {
 
 }
 
-function showPlugin(name, animate) {
+function showPlugin (name, animate) {
 
   if (plugins[activePluginName]) console.log('showPlugin', plugins[activePluginName].module.isVisible)
 
@@ -90,7 +90,7 @@ function showPlugin(name, animate) {
 
   if (name) {
     if (!plugins[name]) {
-      console.error('Plugin "'+name+'" not found. Available plugins are: "'+Object.keys(plugins).join('", "')+'"')
+      console.error('Plugin "' + name + '" not found. Available plugins are: "' + Object.keys(plugins).join('", "') + '"')
 
     } else {
       if (!plugins[name].module.isVisible) plugins[name].module.show(null, animate)
@@ -100,18 +100,18 @@ function showPlugin(name, animate) {
 
     }
   }
-  
+
 }
 
-function show() {
+function show () {
 
   if (!isInitialized) init()
 
   io3dButtonEl.show()
-  
+
 }
 
-function hide(callback) {
+function hide (callback) {
 
   io3dButtonEl.hide()
   if (activePluginName) plugins[activePluginName].module.hide(callback)
@@ -138,14 +138,14 @@ function showMenu (callback) {
   menuEl.style['-webkit-animation-fill-mode'] = 'forwards'
   menuEl.style['animation-fill-mode'] = 'forwards'
 
-  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 500)
+  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500)
 
   return pluginManager
 
 }
 
 function hideMenu (callback) {
-  
+
   if (!isVisibleMenu) return
   isVisibleMenu = false
 
@@ -155,11 +155,11 @@ function hideMenu (callback) {
   menuEl.style['animation-fill-mode'] = 'forwards'
 
   // remove element
-  setTimeout(function(){
+  setTimeout(function () {
     menuEl.style.display = 'none'
   }, 600)
   // trigger callback function
-  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 300)
+  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300)
 
   return pluginManager
 

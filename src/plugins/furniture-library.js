@@ -27,7 +27,7 @@ function init () {
     listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
     onSearchInput: search,
     onItemDrop: addToScene,
-    onHide: function(){
+    onHide: function () {
       scope.isVisible = false
     }
   })
@@ -43,7 +43,7 @@ function search (value) {
     // ... and update view when ready
     .then(function (results) {
 
-      var items = results.map(function(item_){
+      var items = results.map(function (item_) {
         return {
           title: item_.name,
           thumb: item_.indexImage,
@@ -73,7 +73,7 @@ function addToScene (item, position) {
 }
 
 function show (callback, animate) {
-  
+
   if (!isInitialized) init()
 
   if (scope.isVisible) return

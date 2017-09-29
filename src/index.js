@@ -33,13 +33,13 @@ function setInitialPlugin (name) {
 
 // check dependencies
 if (!window.AFRAME) {
-  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "AFRAME"\n'+
-  'Please add "<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>" to "<head>" tag before loading 3d.io plugins.'+
+  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "AFRAME"\n' +
+  'Please add "<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>" to "<head>" tag before loading 3d.io plugins.' +
   'Read more: https://aframe.io/docs/0.7.0/introduction/'
 }
 if (!window.io3d) {
-  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "io3d"\n'+
-  'Please add "<script src="https://dist.3d.io/3dio-js/1.x.x-beta/3dio.min.js"></script>" to "<head>" tag before loading 3d.io plugins.'+
+  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "io3d"\n' +
+  'Please add "<script src="https://dist.3d.io/3dio-js/1.x.x-beta/3dio.min.js"></script>" to "<head>" tag before loading 3d.io plugins.' +
   'Read more: https://3d.io/docs/api/1/get-started-browser.html'
 }
 
@@ -47,15 +47,17 @@ if (!window.io3d) {
 window.io3d.aFrame.pluginsLoaded = true
 
 // add css to page
-var cssEl = el('<style>',{
+var cssEl = el('<style>', {
   id: 'io3d-inspector-plugins___css',
   media: 'screen',
   text: css
 })
-function appendCss() {
+
+function appendCss () {
   cssEl.appendTo(document.head)
 }
-function detachCss() {
+
+function detachCss () {
   document.head.removeChild(cssEl)
 }
 
@@ -68,10 +70,10 @@ if (AFRAME && AFRAME.INSPECTOR && AFRAME.INSPECTOR.opened) {
   init()
 } else {
   // initialize on inspector ready event
-  window.addEventListener('inspector-loaded', init, { once:true })
+  window.addEventListener('inspector-loaded', init, {once: true})
 }
 
-function init() {
+function init () {
 
   if (typeof AFRAME.INSPECTOR.on !== 'function') {
     console.warn('3dio.js: 3d.io inspector plugins require A-Frame version 0.7.0 or higher.')
@@ -79,7 +81,7 @@ function init() {
   } else {
 
     if (AFRAME.INSPECTOR.opened) show()
-    AFRAME.INSPECTOR.on('inspectormodechanged', function(isOpen){
+    AFRAME.INSPECTOR.on('inspectormodechanged', function (isOpen) {
       isOpen ? show() : hide()
     })
 
@@ -87,15 +89,15 @@ function init() {
 
 }
 
-function show() {
+function show () {
   appendCss()
   pluginManager.show()
   if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName, false)
 }
 
-function hide() {
+function hide () {
   setInitialPlugin(null)
-  pluginManager.hide(function() {
+  pluginManager.hide(function () {
     detachCss()
   })
 }

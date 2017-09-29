@@ -8,18 +8,18 @@ export default function createTabUi () {
 
   // DOM
 
-  var tabContainerEl = el('<div>',{
+  var tabContainerEl = el('<div>', {
     class: 'io3d-inspector-plugins io3d-inspector-plugins___tab-container',
   }).appendTo(document.body)
 
-  var tabEl = el('<div>',{
+  var tabEl = el('<div>', {
     class: 'io3d-inspector-plugins___tab'
   }).appendTo(tabContainerEl)
 
   // methods
 
   function slideIn (callback, animate) {
-    
+
     if (isVisible) return
     isVisible = true
 
@@ -71,7 +71,6 @@ export default function createTabUi () {
       if (typeof callback === 'function') callback()
 
     }
-
 
   }
 
