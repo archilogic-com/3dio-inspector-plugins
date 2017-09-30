@@ -25,7 +25,7 @@ function init () {
     title: 'Google Blocks',
     emptyList: 'Sorry, no models found ...',
     listInfo: '',
-    onSearchInput: search,
+    onSearchChange: search,
     onItemDrop: addToScene,
     onHide: function () {
       scope.isVisible = false
@@ -44,6 +44,8 @@ function callSearchApi (offset, value) {
 
 function search (value, offset) {
 
+  listTab.showLoadingInfo()
+
   Promise.all([
     // google has a limit fo max 10 result per call :/
     // so we do 3 api calls and merge the results into one
@@ -57,7 +59,7 @@ function search (value, offset) {
     var items = results.map(function (item_) {
       return {
         title: item_.title,
-        thumb: item_.smallImage || item_.largeImage,
+        thumb: item_.image,
         url: item_.url,
         author: item_.author
       }

@@ -1,4 +1,31 @@
 import createListTabUi from './common/create-list-tab-ui.js'
+import debounce from './common/debounce.js'
+
+var searchDebounced = debounce(function search(value){
+
+  io3d.furniture
+    .search(value, {limit: 150})
+    // ... and update view when ready
+    .then(function (results) {
+
+      var items = results.map(function (item_) {
+        return {
+          title: item_.name,
+          thumb: 'https://res.cloudinary.com/archilogic/image/fetch/c_limit,h_150,w_150/' + item_.indexImage,
+          furnitureId: item_.id
+        }
+      })
+
+      listTab.setList(items)
+
+    })
+    // ... or catch errors
+    .catch(function (error) {
+      console.error(error)
+      io3d.utils.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2))
+    })
+
+})
 
 // config
 
@@ -25,7 +52,7 @@ function init () {
     title: 'Furniture Library',
     emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
     listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
-    onSearchInput: search,
+    onSearchInput: searchDebounced,
     onItemDrop: addToScene,
     onHide: function () {
       scope.isVisible = false
@@ -33,32 +60,6 @@ function init () {
   })
 
   isInitialized = true
-
-}
-
-function search (value) {
-
-  io3d.furniture
-    .search(value, {limit: 150})
-    // ... and update view when ready
-    .then(function (results) {
-
-      var items = results.map(function (item_) {
-        return {
-          title: item_.name,
-          thumb: item_.indexImage,
-          furnitureId: item_.id
-        }
-      })
-
-      listTab.setList(items)
-
-    })
-    // ... or catch errors
-    .catch(function (error) {
-      console.error(error)
-      io3d.utils.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2))
-    })
 
 }
 
@@ -82,7 +83,7 @@ function show (callback, animate) {
   listTab.show(callback, animate)
 
   if (!listTab.searchInputEl.value) {
-    search(DEFAULT_SEARCH_VALUE)
+    searchDebounced(DEFAULT_SEARCH_VALUE)
     listTab.searchInputEl.value = DEFAULT_SEARCH_VALUE
   }
 

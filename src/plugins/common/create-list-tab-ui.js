@@ -11,6 +11,7 @@ function createListTabUi (args) {
   var title = args.title
   var listInfo = args.listInfo
   var emptyList = args.emptyList || '0 results'
+  var onSearchChangeCallback = args.onSearchChange
   var onSearchInputCallback = args.onSearchInput
   var onItemDropCallback = args.onItemDrop
   var onHide = args.onHide
@@ -27,10 +28,23 @@ function createListTabUi (args) {
     init: init,
     show: show,
     hide: hide,
+    showLoadingInfo: showLoadingInfo,
     searchInputEl: null
   }
 
   // methods
+
+  function showLoadingInfo () {
+
+    listEl.empty()
+
+    var emptyEl = el('<div>', {
+      id: 'io3d-inspector-plugins___list-tab___list__info',
+      text: 'Loading...'
+    }).appendTo(listEl)
+    emptyEl.append(emptyList)
+
+  }
 
   function setList (items) {
 
@@ -130,15 +144,22 @@ function createListTabUi (args) {
     dropPlaneEl.addEventListener('dragover', onItemDragOver, false)
     dropPlaneEl.addEventListener('drop', onItemDrop, false)
 
-    if (onSearchInputCallback) {
+    if (onSearchInputCallback || onSearchChangeCallback) {
 
       scope.searchInputEl = el('<input>', {
         id: 'io3d-inspector-plugins___list-tab___search-input',
         placeholder: 'Search...'
       }).appendTo(headerEl)
-      scope.searchInputEl.addEventListener('change', function () {
-        onSearchInputCallback(scope.searchInputEl.value)
-      })
+      if (onSearchChangeCallback) {
+        scope.searchInputEl.addEventListener('change', function () {
+          onSearchChangeCallback(scope.searchChangeEl.value)
+        })
+      }
+      if (onSearchInputCallback) {
+        scope.searchInputEl.addEventListener('input', function () {
+          onSearchInputCallback(scope.searchInputEl.value)
+        })
+      }
 
       el('<div>', {
         id: 'io3d-inspector-plugins___list-tab___search-icon',
