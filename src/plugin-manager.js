@@ -78,8 +78,6 @@ function init () {
 
 function showPlugin (name, animate) {
 
-  if (plugins[activePluginName]) console.log('showPlugin', plugins[activePluginName].module.isVisible)
-
   if (activePluginName) {
     if (name === activePluginName && plugins[activePluginName].module.isVisible) {
       return
