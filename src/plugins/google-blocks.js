@@ -76,7 +76,7 @@ function search (value, offset) {
 
 function addToScene (item, position) {
 
-  var uiMessage = io3d.utils.ui.message('Loading glTF...', 0)
+  var uiMessage = io3d.utils.ui.message('Loading glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>', 0)
 
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
@@ -84,7 +84,7 @@ function addToScene (item, position) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Loaded Model: <a href="' + item.url + '" target="_blank">' + item.url + '</a>')
+    io3d.utils.ui.message.success('Done loading glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box

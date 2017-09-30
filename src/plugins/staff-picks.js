@@ -37,10 +37,15 @@ function init () {
 
 function addToScene (item, position) {
 
+  var uiMessage = io3d.utils.ui.message('Loading data3d from:<br><a href="' + item.editorUrl + '" target="_blank">' + item.editorUrl + '</a>', 0)
+
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
 
   newEntity.addEventListener('model-loaded', function (event) {
+
+    uiMessage.close()
+    io3d.utils.ui.message.success('Done loading data3d from:<br><a href="' + item.editorUrl + '" target="_blank">' + item.editorUrl + '</a>')
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
