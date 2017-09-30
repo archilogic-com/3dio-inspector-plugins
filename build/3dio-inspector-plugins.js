@@ -2,9 +2,9 @@
  * @preserve
  * @name 3dio-inspector-plugins
  * @version 0.0.1
- * @date 2017/09/28 19:42
+ * @date 2017/09/30 09:42
  * @branch master
- * @commit d15ab10ceedc2a4032f2e31d45dbcc64d144381a
+ * @commit 82b6836ef50572c063f47702f5aae4710a4c1257
  * @description Connects A-Frame Inspector to 3d.io APIs
  * @see https://3d.io
  * @tutorial https://github.com/archilogic-com/3dio-inspector-plugins
@@ -18,7 +18,7 @@
 	(global.io3dInspectorPlugins = factory());
 }(this, (function () { 'use strict';
 
-	var BUILD_DATE='2017/09/28 19:42', GIT_BRANCH = 'master', GIT_COMMIT = 'd15ab10ceedc2a4032f2e31d45dbcc64d144381a'
+	var BUILD_DATE='2017/09/30 09:42', GIT_BRANCH = 'master', GIT_COMMIT = '82b6836ef50572c063f47702f5aae4710a4c1257'
 
 	var css = "#io3d-inspector-plugins * {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\n.io3d-inspector-plugins * {\n  outline: none;\n  -webkit-box-sizing: border-box;\n  /* Safari/Chrome, other WebKit */\n  -moz-box-sizing: border-box;\n  /* Firefox, other Gecko */\n  box-sizing: border-box;\n  /* Opera/IE 8+ */\n}\n.io3d-inspector-plugins___tab-container {\n  position: absolute;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  top: 30px;\n  left: 0;\n  bottom: 0;\n  z-index: 100000;\n}\n.io3d-inspector-plugins___tab {\n  position: absolute;\n  font-size: 12px;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 230px;\n  background-color: #2b2b2b;\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-in {\n  0% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    -webkit-transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___tab___slide-out {\n  0% {\n    transform: translateX(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateX(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___3dio-button {\n  z-index: 100000;\n  position: absolute;\n  top: 39px;\n  left: 182px;\n  height: 18px;\n  text-align: right;\n  border-radius: 3px;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___3dio-button svg {\n  height: 100%;\n}\n#io3d-inspector-plugins___3dio-button svg g {\n  fill: #bcbcbc;\n  stroke: #bcbcbc;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___3dio-button svg g:hover {\n  fill: #1faaf2;\n  stroke: #1faaf2;\n  stroke-width: 13;\n}\n#io3d-inspector-plugins___plugins-menu {\n  z-index: 100001;\n  position: absolute;\n  top: 0;\n  left: 250px;\n  width: 230px;\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  letter-spacing: 0px;\n  color: #bcbcbc;\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-in {\n  0% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    -webkit-transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    -webkit-transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n@keyframes io3d-inspector-plugins___plugins-menu-slide-out {\n  0% {\n    transform: translateY(0%);\n    opacity: 1;\n  }\n  100% {\n    transform: translateY(-40%);\n    opacity: 0;\n  }\n}\n#io3d-inspector-plugins___plugins-menu___container {\n  background-color: rgba(0, 0, 0, 0.9);\n  padding: 0 12px 0 12px;\n}\n#io3d-inspector-plugins___plugins-menu___header {\n  padding: 14px 0 14px 0;\n  border-bottom: 1px solid #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___close-button {\n  position: absolute;\n  top: 0;\n  right: 12px;\n  padding: 14px 0 14px 0;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button {\n  padding: 10px 0 10px 0;\n  border-bottom: 1px solid #bcbcbc;\n  cursor: pointer;\n}\n#io3d-inspector-plugins___plugins-menu___button:hover {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n#io3d-inspector-plugins___plugins-menu___footer {\n  padding: 14px 0 14px 0;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___plugins-menu___footer a {\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___plugins-menu___footer a:hover {\n  color: white;\n}\n#io3d-inspector-plugins___bake-lightmaps___container {\n  font-family: Roboto, BlinkMacSystemFont, -apple-system, \"Segoe UI\", Helvetica, Arial, sans-serif;\n  position: absolute;\n  top: 0px;\n  left: 246px;\n  z-index: 100000;\n}\n#io3d-inspector-plugins___bake-lightmaps___main-bar span,\n#io3d-inspector-plugins___bake-lightmaps___main-bar a {\n  text-decoration: none;\n  display: inline-block;\n  height: 33px;\n  line-height: 33px;\n  padding: 0 12px 0 12px;\n  margin: 0 0 0 0;\n  border-left: 1px solid rgba(255, 255, 255, 0.5);\n  white-space: nowrap;\n  font-weight: 400;\n  letter-spacing: 1px;\n  font-size: 12px;\n  color: white;\n  background-color: rgba(0, 0, 0, 0.8);\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button {\n  display: inline-block;\n  cursor: pointer;\n  text-decoration: none;\n  color: white;\n  font-size: 16px;\n  font-weight: 500;\n  letter-spacing: 0px;\n  height: 38px;\n  line-height: 40px;\n  padding: 0 13px 0 13px;\n  background-color: #1faaf2;\n  border-radius: 2px;\n  margin: 16px 0 0 0;\n  position: relative;\n  left: 2px;\n  top: -2px;\n  box-shadow: -2px 2px 0px 0px #105576;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:hover {\n  background-color: #44c3f2;\n}\n#io3d-inspector-plugins___bake-lightmaps___bake-button:active {\n  left: -1px;\n  top: 1px;\n  background-color: #105576;\n  box-shadow: -2px 2px 0px 0px rgba(0, 0, 0, 0);\n}\n#io3d-inspector-plugins___list-tab___header {\n  position: absolute;\n  width: 100%;\n  height: 64px;\n  background-color: #333;\n  top: 0;\n  left: 0;\n}\n#io3d-inspector-plugins___list-tab___title {\n  position: absolute;\n  width: 100%;\n  height: 38px;\n  line-height: 38px;\n  color: #bcbcbc;\n  padding: 0 0 0 8px;\n  top: 0;\n  left: 0;\n  letter-spacing: 1px;\n}\n#io3d-inspector-plugins___list-tab___close-button {\n  -webkit-font-smoothing: antialiased;\n  font-family: FontAwesome;\n  font-size: 16px;\n  font-weight: 200;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  line-height: 20px;\n  border-radius: 50%;\n  text-align: center;\n  top: 9px;\n  right: 4px;\n  cursor: pointer;\n  color: #bcbcbc;\n}\n#io3d-inspector-plugins___list-tab___close-button:hover {\n  color: #1faaf2;\n}\n#io3d-inspector-plugins___list-tab___close-button:before {\n  content: \"\\f00d\";\n}\n#io3d-inspector-plugins___list-tab___search-input {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  writing-mode: horizontal-tb;\n  -webkit-rtl-ordering: logical;\n  -webkit-border-image: none;\n  font-family: \"Roboto Mono\", Consolas, \"Andale Mono\", Monaco, \"Courier New\", monospace;\n  font-size: 11px;\n  font-weight: normal;\n  letter-spacing: 0px;\n  position: absolute;\n  width: 218px;\n  height: 26px;\n  line-height: 26px;\n  top: 37px;\n  left: 6px;\n  padding: 0 0 0 7px;\n  border-radius: 5px;\n  border: 0;\n  background-color: #222222;\n}\n#io3d-inspector-plugins___list-tab___search-icon {\n  font-family: FontAwesome;\n  font-size: 12px;\n  position: absolute;\n  width: 26px;\n  height: 26px;\n  line-height: 26px;\n  top: 37px;\n  right: 0;\n  color: #4d4d4d;\n}\n#io3d-inspector-plugins___list-tab___search-icon:before {\n  content: \"\\f002\";\n}\n#io3d-inspector-plugins___list-tab___list-container {\n  position: absolute;\n  width: 100%;\n  top: 64px;\n  left: 0;\n  bottom: 0;\n  padding: 0 0 20px 0;\n  overflow: auto;\n}\n#io3d-inspector-plugins___list-tab___list-info {\n  position: relative;\n  display: block;\n  width: 100%;\n}\n#io3d-inspector-plugins___list-tab___list {\n  position: relative;\n  display: block;\n  width: 100%;\n  background-color: #2b2b2b;\n  padding: 4px 0 0 4px;\n}\n#io3d-inspector-plugins___list-tab___list___info {\n  margin: 10px 10px 10px 10px;\n  color: #bcbcbc;\n  line-height: 1.3;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item {\n  display: inline-block;\n  margin: 4px 0 0 4px;\n  position: relative;\n  width: 98px;\n  height: 98px;\n  background-color: rgba(255, 255, 255, 0);\n  -moz-user-select: none;\n  -webkit-user-select: none;\n  user-select: none;\n  /* Required to make elements draggable in old WebKit */\n  -khtml-user-drag: element;\n  -webkit-user-drag: element;\n  border: 1px dotted rgba(255, 255, 255, 0.4);\n  border-radius: 3px;\n  overflow: hidden;\n  -webkit-transition: border-color 1500ms;\n  transition: border-color 1500ms;\n  cursor: move;\n  /* fallback if grab cursor is unsupported */\n  cursor: grab;\n  cursor: -moz-grab;\n  cursor: -webkit-grab;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item:active {\n  cursor: grabbing;\n  cursor: -moz-grabbing;\n  cursor: -webkit-grabbing;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item:hover {\n  background-color: #333;\n}\n#io3d-inspector-plugins___list-tab___list .io3d-inspector-plugins___list-item img {\n  position: absolute;\n  opacity: 0;\n  -webkit-transition: opacity 1500ms;\n  transition: opacity 1500ms;\n}\n#io3d-inspector-plugins___list-tab___drop-plane {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 230px;\n  height: 100%;\n  background-color: rgba(33, 172, 242, 0.15);\n  border: 2px solid #21acf2;\n  z-index: 100000;\n  opacity: 0;\n  -webkit-transition: opacity 200ms;\n  transition: opacity 200ms;\n}\n#io3d-inspector-plugins___list-tab___drop-plane-info {\n  width: 100%;\n  height: 100%;\n  line-height: 100vh;\n  text-align: center;\n  color: rgba(33, 172, 242, 0.2);\n  font-size: 68px;\n  font-weight: 400;\n  letter-spacing: 2px;\n}\n";
 
@@ -213,18 +213,18 @@
 
 	// methods
 
-	function setPlugins(plugins_) {
+	function setPlugins (plugins_) {
 	  plugins = plugins_;
 	}
 
-	function init$1() {
+	function init$1 () {
 
 	  isInitialized = true;
 
 	  // DOM
 
 	  // 3d.io button in action bar
-	  
+
 	  io3dButtonEl = el('<div>', {
 	    id: 'io3d-inspector-plugins___3dio-button',
 	    class: 'io3d-inspector-plugins',
@@ -255,7 +255,7 @@
 	    click: hideMenu
 	  }).appendTo(headerEl);
 
-	  Object.keys(plugins).forEach(function(name){
+	  Object.keys(plugins).forEach(function (name) {
 	    var pluginButton = el('<div>', {
 	      id: 'io3d-inspector-plugins___plugins-menu___button',
 	      html: plugins[name].displayTitle,
@@ -263,7 +263,7 @@
 	        showPlugin(name);
 	      }
 	    });
-	    pluginButton.addEventListener('click', function(){
+	    pluginButton.addEventListener('click', function () {
 
 	    });
 	    menuEl.append(pluginButton);
@@ -276,7 +276,7 @@
 
 	}
 
-	function showPlugin(name, animate) {
+	function showPlugin (name, animate) {
 
 	  if (plugins[activePluginName]) console.log('showPlugin', plugins[activePluginName].module.isVisible);
 
@@ -290,7 +290,7 @@
 
 	  if (name) {
 	    if (!plugins[name]) {
-	      console.error('Plugin "'+name+'" not found. Available plugins are: "'+Object.keys(plugins).join('", "')+'"');
+	      console.error('Plugin "' + name + '" not found. Available plugins are: "' + Object.keys(plugins).join('", "') + '"');
 
 	    } else {
 	      if (!plugins[name].module.isVisible) plugins[name].module.show(null, animate);
@@ -300,18 +300,18 @@
 
 	    }
 	  }
-	  
+
 	}
 
-	function show$1() {
+	function show$1 () {
 
 	  if (!isInitialized) init$1();
 
 	  io3dButtonEl.show();
-	  
+
 	}
 
-	function hide$1(callback) {
+	function hide$1 (callback) {
 
 	  io3dButtonEl.hide();
 	  if (activePluginName) plugins[activePluginName].module.hide(callback);
@@ -338,14 +338,14 @@
 	  menuEl.style['-webkit-animation-fill-mode'] = 'forwards';
 	  menuEl.style['animation-fill-mode'] = 'forwards';
 
-	  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 500);
+	  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500);
 
 	  return pluginManager
 
 	}
 
 	function hideMenu (callback) {
-	  
+
 	  if (!isVisibleMenu) return
 	  isVisibleMenu = false;
 
@@ -355,11 +355,11 @@
 	  menuEl.style['animation-fill-mode'] = 'forwards';
 
 	  // remove element
-	  setTimeout(function(){
+	  setTimeout(function () {
 	    menuEl.style.display = 'none';
 	  }, 600);
 	  // trigger callback function
-	  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 300);
+	  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300);
 
 	  return pluginManager
 
@@ -382,18 +382,18 @@
 
 	  // DOM
 
-	  var tabContainerEl = el('<div>',{
+	  var tabContainerEl = el('<div>', {
 	    class: 'io3d-inspector-plugins io3d-inspector-plugins___tab-container',
 	  }).appendTo(document.body);
 
-	  var tabEl = el('<div>',{
+	  var tabEl = el('<div>', {
 	    class: 'io3d-inspector-plugins___tab'
 	  }).appendTo(tabContainerEl);
 
 	  // methods
 
 	  function slideIn (callback, animate) {
-	    
+
 	    if (isVisible) return
 	    isVisible = true;
 
@@ -446,7 +446,6 @@
 
 	    }
 
-
 	  }
 
 	  // expose API
@@ -459,13 +458,13 @@
 
 	}
 
-	var pickingPlane = new THREE.Mesh( new THREE.PlaneBufferGeometry(1000000, 1000000), new THREE.MeshBasicMaterial() );
+	var pickingPlane = new THREE.Mesh(new THREE.PlaneBufferGeometry(1000000, 1000000), new THREE.MeshBasicMaterial());
 	pickingPlane.rotation.x = -Math.PI / 2;
 	pickingPlane.updateMatrixWorld();
 	var pickingVector = new THREE.Vector3();
 	var pickingRaycaster = new THREE.Raycaster();
 
-	function pickPointOnGroundPlane(args) {
+	function pickPointOnGroundPlane (args) {
 
 	  // API
 	  var x = args.x;
@@ -475,7 +474,7 @@
 
 	  // get normalized 2D coordinates
 	  var viewport = canvas.getBoundingClientRect();
-	  var nX =   2 * (x - viewport.left) / viewport.width  - 1;
+	  var nX = 2 * (x - viewport.left) / viewport.width - 1;
 	  var nY = -(2 * (y - viewport.top) / viewport.height - 1);
 
 	  // setup raycaster
@@ -493,7 +492,7 @@
 	    return new THREE.Vector3()
 	  }
 
-	  return intersects[ 0 ].point
+	  return intersects[0].point
 
 	}
 
@@ -506,6 +505,7 @@
 	  var title = args.title;
 	  var listInfo = args.listInfo;
 	  var emptyList = args.emptyList || '0 results';
+	  var onSearchChangeCallback = args.onSearchChange;
 	  var onSearchInputCallback = args.onSearchInput;
 	  var onItemDropCallback = args.onItemDrop;
 	  var onHide = args.onHide;
@@ -522,17 +522,30 @@
 	    init: init,
 	    show: show,
 	    hide: hide,
+	    showLoadingInfo: showLoadingInfo,
 	    searchInputEl: null
 	  };
 
 	  // methods
+
+	  function showLoadingInfo () {
+
+	    listEl.empty();
+
+	    var emptyEl = el('<div>', {
+	      id: 'io3d-inspector-plugins___list-tab___list__info',
+	      text: 'Loading...'
+	    }).appendTo(listEl);
+	    emptyEl.append(emptyList);
+
+	  }
 
 	  function setList (items) {
 
 	    listEl.empty();
 
 	    if (!items.length) {
-	      var emptyEl =  el('<div>', {
+	      var emptyEl = el('<div>', {
 	        id: 'io3d-inspector-plugins___list-tab___list__info',
 	      }).appendTo(listEl);
 	      emptyEl.append(emptyList);
@@ -546,16 +559,16 @@
 	      listInfoEl.append(listInfo);
 	    }
 
-	    items.forEach(function(item){
+	    items.forEach(function (item) {
 
-	      var itemEl = el('<div>', { class: 'io3d-inspector-plugins___list-item' }).appendTo(listEl);
+	      var itemEl = el('<div>', {class: 'io3d-inspector-plugins___list-item'}).appendTo(listEl);
 	      itemEl.setAttribute('draggable', true);
 
 	      if (item.thumb) {
 	        var img = el('<img>').appendTo(itemEl);
-	        img.addEventListener('load', function (){
+	        img.addEventListener('load', function () {
 	          var ratio = img.width / img.height;
-	          if (ratio>1) {
+	          if (ratio > 1) {
 	            // landscape
 	            img.style.top = Math.floor((90 - 90 / ratio) / 2 + 3) + 'px';
 	            img.style.left = '3px';
@@ -574,7 +587,7 @@
 	        img.src = item.thumb;
 	      }
 
-	      itemEl.addEventListener('dragstart', function onItemDragStart(e) {
+	      itemEl.addEventListener('dragstart', function onItemDragStart (e) {
 	        if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
 	        fadeInDropPlane();
 	        e.dataTransfer.effectAllowed = 'move';
@@ -582,7 +595,7 @@
 	        return false
 	      }, false);
 
-	      itemEl.addEventListener('dragend', function onItemDragEnd(e) {
+	      itemEl.addEventListener('dragend', function onItemDragEnd (e) {
 	        if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting.
 	        fadeOutDropPlane();
 	        return false
@@ -625,15 +638,22 @@
 	    dropPlaneEl.addEventListener('dragover', onItemDragOver, false);
 	    dropPlaneEl.addEventListener('drop', onItemDrop, false);
 
-	    if (onSearchInputCallback) {
+	    if (onSearchInputCallback || onSearchChangeCallback) {
 
 	      scope.searchInputEl = el('<input>', {
 	        id: 'io3d-inspector-plugins___list-tab___search-input',
 	        placeholder: 'Search...'
 	      }).appendTo(headerEl);
-	      scope.searchInputEl.addEventListener('change', function () {
-	        onSearchInputCallback(scope.searchInputEl.value);
-	      });
+	      if (onSearchChangeCallback) {
+	        scope.searchInputEl.addEventListener('change', function () {
+	          onSearchChangeCallback(scope.searchChangeEl.value);
+	        });
+	      }
+	      if (onSearchInputCallback) {
+	        scope.searchInputEl.addEventListener('input', function () {
+	          onSearchInputCallback(scope.searchInputEl.value);
+	        });
+	      }
 
 	      el('<div>', {
 	        id: 'io3d-inspector-plugins___list-tab___search-icon',
@@ -656,7 +676,7 @@
 
 	  }
 
-	  function onItemDragOver(e) {
+	  function onItemDragOver (e) {
 
 	    if (e.preventDefault) e.preventDefault(); // Necessary. Allows us to drop.
 
@@ -692,24 +712,24 @@
 
 	  function fadeInDropPlane () {
 	    dropPlaneEl.style.display = 'block';
-	    setTimeout(function(){
+	    setTimeout(function () {
 	      dropPlaneEl.style.opacity = 1;
 	    }, 50);
 	  }
 
 	  function fadeOutDropPlane () {
 	    dropPlaneEl.style.opacity = 0;
-	    setTimeout(function(){
+	    setTimeout(function () {
 	      dropPlaneEl.style.display = 'none';
 	    }, 300);
 	  }
 
 	  function show (callback, animate) {
 	    if (!isInitialized) init();
-	    tab.slideIn(function(){
+	    tab.slideIn(function () {
 
 	      if (scope.searchInputEl) {
-	        setTimeout(function(){
+	        setTimeout(function () {
 	          scope.searchInputEl.focus();
 	          scope.searchInputEl.selectionStart = 10000;
 	          scope.searchInputEl.selectionEnd = 10000;
@@ -730,6 +750,66 @@
 	  return scope
 
 	}
+
+	function debounce (func, options) {
+
+	  // API
+	  options = options || {};
+	  var wait = options.wait !== undefined ? options.wait : 500;
+	  var immediate = options.immediate !== undefined ? options.immediate : false;
+	  var context = options.context !== undefined ? options.context : this;
+
+	  // validate
+	  if (wait === 0) throw 'param "wait" must be larger than 0'
+	  if (typeof func !== 'function') throw 'Please provide a function as first argument'
+
+	  // internals
+	  var args, timeout = null;
+
+	  // (based on underscore)
+	  // Returns a function, that, as long as it continues to be invoked, will not
+	  // be triggered. The function will be called after it stops being called for
+	  // N milliseconds. If `immediate` is passed, trigger the function on the
+	  // leading edge, instead of the trailing.
+	  function runLater () {
+	    timeout = null;
+	    if (!immediate) func.apply(context, args);
+	  }
+
+	  return function debounced () {
+	    args = arguments;
+	    if (timeout) clearTimeout(timeout);
+	    timeout = setTimeout(runLater, wait);
+	    if (immediate && !timeout) func.apply(context, args);
+	  }
+
+	}
+
+	var searchDebounced = debounce(function search(value){
+
+	  io3d.furniture
+	    .search(value, {limit: 150})
+	    // ... and update view when ready
+	    .then(function (results) {
+
+	      var items = results.map(function (item_) {
+	        return {
+	          title: item_.name,
+	          thumb: 'https://res.cloudinary.com/archilogic/image/fetch/c_limit,h_150,w_150/' + item_.indexImage,
+	          furnitureId: item_.id
+	        }
+	      });
+
+	      listTab.setList(items);
+
+	    })
+	    // ... or catch errors
+	    .catch(function (error) {
+	      console.error(error);
+	      io3d.utils.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2));
+	    });
+
+	});
 
 	// config
 
@@ -756,40 +836,14 @@
 	    title: 'Furniture Library',
 	    emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
 	    listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
-	    onSearchInput: search,
+	    onSearchInput: searchDebounced,
 	    onItemDrop: addToScene,
-	    onHide: function(){
+	    onHide: function () {
 	      scope.isVisible = false;
 	    }
 	  });
 
 	  isInitialized$1 = true;
-
-	}
-
-	function search (value) {
-
-	  io3d.furniture
-	    .search(value, {limit: 150})
-	    // ... and update view when ready
-	    .then(function (results) {
-
-	      var items = results.map(function(item_){
-	        return {
-	          title: item_.name,
-	          thumb: item_.indexImage,
-	          furnitureId: item_.id
-	        }
-	      });
-
-	      listTab.setList(items);
-
-	    })
-	    // ... or catch errors
-	    .catch(function (error) {
-	      console.error(error);
-	      io3d.utils.message.error('Sorry, something went wrong:\n\n' + JSON.stringify(error, null, 2));
-	    });
 
 	}
 
@@ -804,7 +858,7 @@
 	}
 
 	function show$2 (callback, animate) {
-	  
+
 	  if (!isInitialized$1) init$2();
 
 	  if (scope.isVisible) return
@@ -813,7 +867,7 @@
 	  listTab.show(callback, animate);
 
 	  if (!listTab.searchInputEl.value) {
-	    search(DEFAULT_SEARCH_VALUE);
+	    searchDebounced(DEFAULT_SEARCH_VALUE);
 	    listTab.searchInputEl.value = DEFAULT_SEARCH_VALUE;
 	  }
 
@@ -855,9 +909,9 @@
 	    title: 'Google Blocks',
 	    emptyList: 'Sorry, no models found ...',
 	    listInfo: '',
-	    onSearchInput: search$1,
+	    onSearchChange: search,
 	    onItemDrop: addToScene$1,
-	    onHide: function(){
+	    onHide: function () {
 	      scope$1.isVisible = false;
 	    }
 	  });
@@ -866,13 +920,15 @@
 
 	}
 
-	function callSearchApi(offset, value) {
-	  return fetch('https://us-central1-gblock-api.cloudfunctions.net/search?limit=10&offset='+offset+'&query='+value).then(function (response) {
+	function callSearchApi (offset, value) {
+	  return fetch('https://us-central1-gblock-api.cloudfunctions.net/search?limit=10&offset=' + offset + '&query=' + value).then(function (response) {
 	    return response.json()
 	  })
 	}
 
-	function search$1 (value, offset) {
+	function search (value, offset) {
+
+	  listTab$1.showLoadingInfo();
 
 	  Promise.all([
 	    // google has a limit fo max 10 result per call :/
@@ -880,14 +936,14 @@
 	    callSearchApi(1, value),
 	    callSearchApi(11, value),
 	    callSearchApi(21, value)
-	  ]).then(function(results){
+	  ]).then(function (results) {
 	    return results[0].items.concat(results[1].items).concat(results[2].items)
 	  }).then(function (results) {
 
-	    var items = results.map(function(item_){
+	    var items = results.map(function (item_) {
 	      return {
 	        title: item_.title,
-	        thumb: item_.smallImage || item_.largeImage,
+	        thumb: item_.image,
 	        url: item_.url,
 	        author: item_.author
 	      }
@@ -909,30 +965,30 @@
 	  // add new entity to scene
 	  var newEntity = document.createElement('a-entity');
 
-	  newEntity.addEventListener('model-loaded', function(event){
+	  newEntity.addEventListener('model-loaded', function (event) {
 
 	    uiMessage.close();
-	    io3d.utils.ui.message.success('Loaded Model: <a href="'+item.url+'" target="_blank">'+item.url+'</a>');
+	    io3d.utils.ui.message.success('Loaded Model: <a href="' + item.url + '" target="_blank">' + item.url + '</a>');
 
 	    // center model to picking position
 	    var bb = new THREE.Box3().setFromObject(event.detail.model); // bounding box
-	    var size = new THREE.Vector3( Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
+	    var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
 	    position.set(
-	      position.x - bb.min.x - size.x/2,
+	      position.x - bb.min.x - size.x / 2,
 	      -bb.min.y,
-	      position.z - bb.min.z - size.z/2
+	      position.z - bb.min.z - size.z / 2
 	    );
 
 	    newEntity.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z);
 
-	  }, { once: true });
+	  }, {once: true});
 
-	  newEntity.addEventListener('model-error', function(event){
+	  newEntity.addEventListener('model-error', function (event) {
 
 	    uiMessage.close();
-	    io3d.utils.ui.message.error('Sorry: '+event.detail.message+'<br/><a href="'+item.url+'" target="_blank">'+item.url+'</a>');
+	    io3d.utils.ui.message.error('Sorry: ' + event.detail.message + '<br/><a href="' + item.url + '" target="_blank">' + item.url + '</a>');
 
-	  }, { once: true });
+	  }, {once: true});
 
 	  newEntity.setAttribute('gblock', item.url);
 	  document.querySelector('a-scene').appendChild(newEntity);
@@ -949,7 +1005,7 @@
 	  listTab$1.show(callback, animate);
 
 	  if (!listTab$1.searchInputEl.value) {
-	    search$1(DEFAULT_SEARCH_VALUE$1);
+	    search(DEFAULT_SEARCH_VALUE$1);
 	    listTab$1.searchInputEl.value = DEFAULT_SEARCH_VALUE$1;
 	  }
 
@@ -994,6 +1050,108 @@
 	  thumb: null,
 	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170927-2018-a10bpi/archilogic_2017-09-27_20-18-12_GT3EQI.gz.data3d.buffer',
 	  format: 'data3d'
+	},{
+	  title: 'Loewy House by Albert Frey HalfSkyCylinder',
+	  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-09-29_12-36-00_pGKpVA/Cursor_and_Archilogic.png',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/wlnobthy?modelResourceId=88ac69d1-28c1-406c-890c-1f86531e2a31&mode=edit',
+	  url: 'https://storage.3d.io/535e624259ee6b0200000484/170929-1444-iae715/archilogic_2017-09-29_14-42-24_3Xo4kP.gz.data3d.buffer',
+	  format: 'data3d'
+	},{
+	  title: '',
+	  thumb: '',
+	  editorUrl: '',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Stahl House',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/la7jhe3t?modelResourceId=216cfcbc-82d3-4ad0-a834-e6cfbb173dcb&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'The Office',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/uhyxqfvr?modelResourceId=34bfdbba-a44d-4268-bdb8-6b7cfe719555',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'The Office Opacity',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/jvafqyqy?modelResourceId=4cf23256-ed41-4fc0-96b1-e495e93e3da0&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Ryerson Student Learning Center',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/gnrn8dun?modelResourceId=6b02c7de-31bb-4641-af5b-52a9b1c334c4&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: '221B Baker Street - Sherlock\'s apartment',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/1i0vuotf?modelResourceId=de9457f2-74e1-4acf-b229-fb304093ef2e&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Big Bang Theory',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/fljox97z?modelResourceId=60dde7c8-d481-475f-9c0f-8ecbe57cef05&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Christian Grey\'s Apartment',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/dekt1bq3?modelResourceId=6d511fe1-6189-452b-b822-510d42b74e72&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Carrie Bradshaw\'s Apartment',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/fpt7d8rj?modelResourceId=77123cb8-ceb2-4bd7-8e59-9ee3feae7441&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Friends',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/9ah60id5?modelResourceId=cf159e73-4f7a-413b-adb2-563913ba4fd7&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Aluminaire_House',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/0imo45dd?modelResourceId=cff45650-49e6-43d2-993e-7076d6b07232&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Miller & Monroe House by Frank Lloyd Wright ',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/qlnxw5bm?modelResourceId=ba644605-277f-4a12-bc9e-13cbc51e94e2&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Case Study House 4, Ralph Rapson',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/krxvla7n?modelResourceId=ac682b97-3c9b-45a0-9c90-f1534ea769d3&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: '55 West 17th Street @night',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/empzwgkx?modelResourceId=e717c8e5-3d7c-423b-b2f2-21874665a5b3&mode=edit&view-menu=none&main-menu=save&logo=false',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'Steve Jobs Theatre',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/clxtnlsv?modelResourceId=6f3a27fa-51e0-4773-9cb7-87d497b554af&mode=edit',
+	  url: '',
+	  format: 'data3d'
+	},{
+	  title: 'The Performance Arcade',
+	  thumb: '',
+	  editorUrl: 'https://spaces.archilogic.com/model/archilogic/rqjxqjug?modelResourceId=6dc5516a-1c90-4204-a572-bfb45beec3fe&mode=edit',
+	  url: '',
+	  format: 'data3d'
 	}];
 
 	// export
@@ -1017,7 +1175,7 @@
 	    title: 'Staff Pics',
 	    listInfo: 'A growing list of models for testing and demo purposes.',
 	    onItemDrop: addToScene$2,
-	    onHide: function(){
+	    onHide: function () {
 	      scope$2.isVisible = false;
 	    }
 	  });
@@ -1035,25 +1193,25 @@
 	  // add new entity to scene
 	  var newEntity = document.createElement('a-entity');
 
-	  newEntity.addEventListener('model-loaded', function(event){
+	  newEntity.addEventListener('model-loaded', function (event) {
 
 	    // center model to picking position
 	    var bb = new THREE.Box3().setFromObject(event.detail.model); // bounding box
-	    var size = new THREE.Vector3( Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
+	    var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z));
 	    position.set(
-	      position.x - bb.min.x - size.x/2,
+	      position.x - bb.min.x - size.x / 2,
 	      -bb.min.y,
-	      position.z - bb.min.z - size.z/2
+	      position.z - bb.min.z - size.z / 2
 	    );
 
 	    newEntity.setAttribute('position', position.x + ' 0 ' + position.z);
 
-	  }, { once: true });
+	  }, {once: true});
 
 	  if (item.format === 'data3d') {
 	    newEntity.setAttribute('io3d-data3d', 'url', item.url);
 	  } else {
-	    io3d.utils.ui.message.error('Error: Unknown model format: '+item.format);
+	    io3d.utils.ui.message.error('Error: Unknown model format: ' + item.format);
 	  }
 
 	  document.querySelector('a-scene').appendChild(newEntity);
@@ -1110,13 +1268,13 @@
 
 	// check dependencies
 	if (!window.AFRAME) {
-	  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "AFRAME"\n'+
-	  'Please add "<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>" to "<head>" tag before loading 3d.io plugins.'+
+	  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "AFRAME"\n' +
+	  'Please add "<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>" to "<head>" tag before loading 3d.io plugins.' +
 	  'Read more: https://aframe.io/docs/0.7.0/introduction/'
 	}
 	if (!window.io3d) {
-	  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "io3d"\n'+
-	  'Please add "<script src="https://dist.3d.io/3dio-js/1.x.x-beta/3dio.min.js"></script>" to "<head>" tag before loading 3d.io plugins.'+
+	  throw 'Error loading 3d.io Inspector Plugins: Missing dependency: "io3d"\n' +
+	  'Please add "<script src="https://dist.3d.io/3dio-js/1.x.x-beta/3dio.min.js"></script>" to "<head>" tag before loading 3d.io plugins.' +
 	  'Read more: https://3d.io/docs/api/1/get-started-browser.html'
 	}
 
@@ -1124,15 +1282,17 @@
 	window.io3d.aFrame.pluginsLoaded = true;
 
 	// add css to page
-	var cssEl = el('<style>',{
+	var cssEl = el('<style>', {
 	  id: 'io3d-inspector-plugins___css',
 	  media: 'screen',
 	  text: css
 	});
-	function appendCss() {
+
+	function appendCss () {
 	  cssEl.appendTo(document.head);
 	}
-	function detachCss() {
+
+	function detachCss () {
 	  document.head.removeChild(cssEl);
 	}
 
@@ -1145,10 +1305,10 @@
 	  init();
 	} else {
 	  // initialize on inspector ready event
-	  window.addEventListener('inspector-loaded', init, { once:true });
+	  window.addEventListener('inspector-loaded', init, {once: true});
 	}
 
-	function init() {
+	function init () {
 
 	  if (typeof AFRAME.INSPECTOR.on !== 'function') {
 	    console.warn('3dio.js: 3d.io inspector plugins require A-Frame version 0.7.0 or higher.');
@@ -1156,7 +1316,7 @@
 	  } else {
 
 	    if (AFRAME.INSPECTOR.opened) show();
-	    AFRAME.INSPECTOR.on('inspectormodechanged', function(isOpen){
+	    AFRAME.INSPECTOR.on('inspectormodechanged', function (isOpen) {
 	      isOpen ? show() : hide();
 	    });
 
@@ -1164,15 +1324,15 @@
 
 	}
 
-	function show() {
+	function show () {
 	  appendCss();
 	  pluginManager.show();
 	  if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName, false);
 	}
 
-	function hide() {
+	function hide () {
 	  setInitialPlugin(null);
-	  pluginManager.hide(function() {
+	  pluginManager.hide(function () {
 	    detachCss();
 	  });
 	}
