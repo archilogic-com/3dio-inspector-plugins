@@ -26,6 +26,7 @@ function createListTabUi (args) {
   var scope = {
     setInfo: setInfo,
     setList: setList,
+    getSearchValue: getSearchValue,
     setSearchValue: setSearchValue,
     init: init,
     show: show,
@@ -33,6 +34,12 @@ function createListTabUi (args) {
   }
 
   // methods
+
+  function getSearchValue (val) {
+
+    return searchInputEl.value
+
+  }
 
   function setSearchValue (val) {
 
@@ -132,23 +139,23 @@ function createListTabUi (args) {
     }).appendTo(document.body)
     dropPlaneEl.addEventListener('dragover', onItemDragOver, false)
     dropPlaneEl.addEventListener('drop', onItemDrop, false)
-
+    
     if (onSearchInputCallback || onSearchChangeCallback) {
 
-      scope.searchInputEl = el('<input>', {
+      // add search bar
+      
+      searchInputEl = el('<input>', {
         id: 'io3d-inspector-plugins___list-tab___search-input',
         placeholder: 'Search...'
       }).appendTo(headerEl)
-      if (onSearchChangeCallback) {
-        scope.searchInputEl.addEventListener('change', function () {
-          onSearchChangeCallback(scope.searchInputEl.value)
-        })
-      }
-      if (onSearchInputCallback) {
-        scope.searchInputEl.addEventListener('input', function () {
-          onSearchInputCallback(scope.searchInputEl.value)
-        })
-      }
+
+      if (onSearchChangeCallback) searchInputEl.addEventListener('change', function () {
+        onSearchChangeCallback(searchInputEl.value)
+      })
+
+      if (onSearchInputCallback) searchInputEl.addEventListener('input', function () {
+        onSearchInputCallback(searchInputEl.value)
+      })
 
       el('<div>', {
         id: 'io3d-inspector-plugins___list-tab___search-icon',
@@ -158,10 +165,14 @@ function createListTabUi (args) {
 
     } else {
 
+      // no search bar
+
       headerEl.style.height = listContainerEl.style.top = '37px'
 
     }
 
+    // overlay plane for drag and drop
+    
     el('<div>', {
       id: 'io3d-inspector-plugins___list-tab___drop-plane-info',
       text: 'drop here'
@@ -223,11 +234,11 @@ function createListTabUi (args) {
     if (!isInitialized) init()
     tab.slideIn(function () {
 
-      if (scope.searchInputEl) {
+      if (searchInputEl) {
         setTimeout(function () {
-          scope.searchInputEl.focus()
-          scope.searchInputEl.selectionStart = 10000
-          scope.searchInputEl.selectionEnd = 10000
+          searchInputEl.focus()
+          searchInputEl.selectionStart = 10000
+          searchInputEl.selectionEnd = 10000
         }, 50)
       }
 

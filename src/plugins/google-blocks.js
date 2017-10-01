@@ -120,7 +120,7 @@ function show (callback, animate) {
 
   listTab.show(callback, animate)
 
-  if (!listTab.searchInputEl.value) {
+  if (!listTab.getSearchValue()) {
     search(DEFAULT_SEARCH_VALUE)
     listTab.setSearchValue(DEFAULT_SEARCH_VALUE)
   }
