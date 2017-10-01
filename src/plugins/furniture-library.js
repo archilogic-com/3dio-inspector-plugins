@@ -3,6 +3,9 @@ import debounce from './common/debounce.js'
 
 var searchDebounced = debounce(function search(value){
 
+  listTab.setList(null)
+  listTab.setInfo('Loading ...')
+
   io3d.furniture
     .search(value, {limit: 150})
     // ... and update view when ready
@@ -17,6 +20,14 @@ var searchDebounced = debounce(function search(value){
       })
 
       listTab.setList(items)
+
+      if (items.length) {
+        // show some info on models
+        listTab.setInfo('All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)')
+      } else {
+        // show no result text
+        listTab.setInfo('Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...')
+      }
 
     })
     // ... or catch errors
@@ -50,8 +61,6 @@ function init () {
 
   listTab = createListTabUi({
     title: 'Furniture Library',
-    emptyList: 'Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...',
-    listInfo: 'All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)',
     onSearchInput: searchDebounced,
     onItemDrop: addToScene,
     onHide: function () {
@@ -84,7 +93,7 @@ function show (callback, animate) {
 
   if (!listTab.searchInputEl.value) {
     searchDebounced(DEFAULT_SEARCH_VALUE)
-    listTab.searchInputEl.value = DEFAULT_SEARCH_VALUE
+    listTab.setSearchValue(DEFAULT_SEARCH_VALUE)
   }
 
 }

@@ -9,8 +9,6 @@ function createListTabUi (args) {
   // API
 
   var title = args.title
-  var listInfo = args.listInfo
-  var emptyList = args.emptyList || '0 results'
   var onSearchChangeCallback = args.onSearchChange
   var onSearchInputCallback = args.onSearchInput
   var onItemDropCallback = args.onItemDrop
@@ -20,54 +18,41 @@ function createListTabUi (args) {
 
   var isInitialized = false
   var tab
-  var listEl
+  var listInfoEl
+  var listItemContainerEl
   var dropPlaneEl
+  var searchInputEl
 
   var scope = {
+    setInfo: setInfo,
     setList: setList,
+    setSearchValue: setSearchValue,
     init: init,
     show: show,
-    hide: hide,
-    showLoadingInfo: showLoadingInfo,
-    searchInputEl: null
+    hide: hide
   }
 
   // methods
 
-  function showLoadingInfo () {
+  function setSearchValue (val) {
 
-    listEl.empty()
+    searchInputEl.value = val
 
-    var emptyEl = el('<div>', {
-      id: 'io3d-inspector-plugins___list-tab___list__info',
-      text: 'Loading...'
-    }).appendTo(listEl)
-    emptyEl.append(emptyList)
+  }
+
+  function setInfo (el) {
+
+    listInfoEl.empty()
+    if (el) listInfoEl.append(el)
 
   }
 
   function setList (items) {
 
-    listEl.empty()
+    listItemContainerEl.empty()
+    if (items) items.forEach(function (item) {
 
-    if (!items.length) {
-      var emptyEl = el('<div>', {
-        id: 'io3d-inspector-plugins___list-tab___list__info',
-      }).appendTo(listEl)
-      emptyEl.append(emptyList)
-      return
-    }
-
-    if (listInfo) {
-      var listInfoEl = el('<div>', {
-        id: 'io3d-inspector-plugins___list-tab___list___info',
-      }).appendTo(listEl)
-      listInfoEl.append(listInfo)
-    }
-
-    items.forEach(function (item) {
-
-      var itemEl = el('<div>', {class: 'io3d-inspector-plugins___list-item'}).appendTo(listEl)
+      var itemEl = el('<div>', {class: 'io3d-inspector-plugins___list-item'}).appendTo(listItemContainerEl)
       itemEl.setAttribute('draggable', true)
 
       if (item.thumb) {
@@ -133,8 +118,12 @@ function createListTabUi (args) {
       id: 'io3d-inspector-plugins___list-tab___list-container',
     }).appendTo(tab.el)
 
-    listEl = el('<div>', {
-      id: 'io3d-inspector-plugins___list-tab___list',
+    listInfoEl = el('<div>', {
+      id: 'io3d-inspector-plugins___list-tab___list-info',
+    }).appendTo(listContainerEl)
+
+    listItemContainerEl = el('<div>', {
+      id: 'io3d-inspector-plugins___list-tab___list-item-container',
     }).appendTo(listContainerEl)
 
     dropPlaneEl = el('<div>', {
@@ -152,7 +141,7 @@ function createListTabUi (args) {
       }).appendTo(headerEl)
       if (onSearchChangeCallback) {
         scope.searchInputEl.addEventListener('change', function () {
-          onSearchChangeCallback(scope.searchChangeEl.value)
+          onSearchChangeCallback(scope.searchInputEl.value)
         })
       }
       if (onSearchInputCallback) {

@@ -23,8 +23,6 @@ function init () {
 
   listTab = createListTabUi({
     title: 'Google Blocks',
-    emptyList: 'Sorry, no models found ...',
-    listInfo: '',
     onSearchChange: search,
     onItemDrop: addToScene,
     onHide: function () {
@@ -44,7 +42,8 @@ function callSearchApi (offset, value) {
 
 function search (value, offset) {
 
-  listTab.showLoadingInfo()
+  listTab.setInfo('Loading ...')
+  listTab.setList(null)
 
   Promise.all([
     // google has a limit fo max 10 result per call :/
@@ -66,6 +65,7 @@ function search (value, offset) {
     })
 
     listTab.setList(items)
+    listTab.setInfo(items.length ? null : 'No results found.')
 
   }).catch(function (error) {
     console.error(error)
@@ -84,7 +84,7 @@ function addToScene (item, position) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Done loading glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
+    io3d.utils.ui.message.success('Loaded glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
@@ -122,7 +122,7 @@ function show (callback, animate) {
 
   if (!listTab.searchInputEl.value) {
     search(DEFAULT_SEARCH_VALUE)
-    listTab.searchInputEl.value = DEFAULT_SEARCH_VALUE
+    listTab.setSearchValue(DEFAULT_SEARCH_VALUE)
   }
 
 }

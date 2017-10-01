@@ -92,27 +92,23 @@
         bottom: 0;
         padding: 0 0 20px 0;
         overflow: auto;
+        background-color: rgb(43,43,43);
     }
 
     &___list-info {
         position: relative;
         display: block;
+        padding: 10px;
         width: 100%;
+        color: #bcbcbc;
+        line-height: 1.3;
     }
 
-    &___list {
+    &___list-item-container {
         position: relative;
         display: block;
         width: 100%;
-
-        background-color: rgb(43,43,43);
         padding: 4px 0 0 4px;
-
-        &___info {
-            margin: 10px 10px 10px 10px;
-            color: #bcbcbc;
-            line-height: 1.3;
-        }
 
         .io3d-inspector-plugins___list-item {
             display: inline-block;
@@ -120,7 +116,6 @@
             position: relative;
             width: 98px;
             height: 98px;
-            background-color: rgba(255,255,255,0);
 
             -moz-user-select: none;
             -webkit-user-select: none;
