@@ -101,7 +101,7 @@ function showPlugin (name, animate) {
 
 }
 
-function show () {
+function show3dioButton () {
 
   if (!isInitialized) init()
 
@@ -109,7 +109,7 @@ function show () {
 
 }
 
-function hide (callback) {
+function hide3dioButton (callback) {
 
   io3dButtonEl.hide()
   if (activePluginName) plugins[activePluginName].module.hide(callback)
@@ -127,6 +127,10 @@ function showMenu (callback) {
 
   if (isVisibleMenu) return
   isVisibleMenu = true
+
+  if (!isInitialized) init()
+
+  window.dispatchEvent(new CustomEvent('io3d-inspector-plugins-menu-state', {detail: {isVisible: true}}))
 
   menuEl.style.opacity = 0
   menuEl.style.display = 'block'
@@ -146,6 +150,8 @@ function hideMenu (callback) {
 
   if (!isVisibleMenu) return
   isVisibleMenu = false
+
+  window.dispatchEvent(new CustomEvent('io3d-inspector-plugins-menu-state', {detail: {isVisible: false}}))
 
   menuEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___plugins-menu-slide-out ease-in'
   menuEl.style['animation'] = '600ms io3d-inspector-plugins___plugins-menu-slide-out ease-in'
@@ -167,9 +173,11 @@ function hideMenu (callback) {
 
 var pluginManager = {
   setPlugins: setPlugins,
-  show: show,
-  hide: hide,
-  showPlugin: showPlugin
+  showPlugin: showPlugin,
+  show3dioButton: show3dioButton,
+  hide3dioButton: hide3dioButton,
+  showMenu: showMenu,
+  hideMenu: hideMenu
 }
 
 // expose API

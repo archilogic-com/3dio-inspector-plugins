@@ -91,21 +91,25 @@ function init () {
 
 function show () {
   appendCss()
-  pluginManager.show()
+  pluginManager.show3dioButton()
   if (window.io3d.aFrame.activePluginName) pluginManager.showPlugin(window.io3d.aFrame.activePluginName, false)
 }
 
 function hide () {
   setInitialPlugin(null)
-  pluginManager.hide(function () {
+  pluginManager.hide3dioButton(function () {
     detachCss()
   })
 }
 
 // expose API
 
+console.log(pluginManager)
+
 var io3dInspectorPlugins = {
-  setInitialPlugin: setInitialPlugin
+  setInitialPlugin: setInitialPlugin,
+  showMenu: pluginManager.showMenu,
+  hideMenu: pluginManager.hideMenu
 }
 
 export default io3dInspectorPlugins
