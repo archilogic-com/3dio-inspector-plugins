@@ -50,7 +50,12 @@ function createListTabUi (args) {
   function setInfo (el) {
 
     listInfoEl.empty()
-    if (el) listInfoEl.append(el)
+
+    if (el) {
+      listInfoEl.append(el).show()
+    } else {
+      listInfoEl.hide()
+    }
 
   }
 
