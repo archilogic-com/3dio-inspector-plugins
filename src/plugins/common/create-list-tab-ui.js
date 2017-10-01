@@ -1,6 +1,7 @@
 import el from '../../common/dom-el.js'
 import createTabUi from './create-tab-ui.js'
 import pickPointOnGroundPlane from './pick-point-on-ground-plane.js'
+import getCenteredImageLayout from './get-centered-image-layout.js'
 
 // internals
 
@@ -70,22 +71,22 @@ function createListTabUi (args) {
       if (item.thumb) {
         var img = el('<img>').appendTo(itemEl)
         img.addEventListener('load', function () {
-          var ratio = img.width / img.height
-          if (ratio > 1) {
-            // landscape
-            img.style.top = Math.floor((90 - 90 / ratio) / 2 + 3) + 'px'
-            img.style.left = '3px'
-            img.style.width = '90px'
-            img.style.height = Math.floor(90 / ratio) + 'px'
-          } else {
-            // portrait
-            img.style.top = '3px'
-            img.style.left = Math.floor((90 - 90 * ratio) / 2 + 3) + 'px'
-            img.style.width = Math.floor(90 * ratio) + 'px'
-            img.style.height = '90px'
-          }
+
+          // center image filling container div
+          var layout = getCenteredImageLayout({
+            originalWidth: img.width,
+            originalHeight: img.height,
+            maxWidth: 90,
+            maxHeight: 90
+          })
+          img.style.top = (layout.top + 3) + 'px'
+          img.style.left = (layout.left + 3) + 'px'
+          img.style.width = (layout.width + 3) + 'px'
+          img.style.height = (layout.height + 3) + 'px'
+
           img.style.opacity = 1
           itemEl.style.borderColor = 'transparent'
+
         })
         img.src = item.thumb
       }
