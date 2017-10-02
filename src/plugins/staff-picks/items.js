@@ -1,131 +1,137 @@
 export default [{
-  thumb: null,
-  url: 'https://storage.3d.io/archilogic/sample-models/cube-with-texture/data3d/cube-with-texture.gz.data3d.buffer',
-  format: 'data3d'
+  title: 'Steve Jobs Theatre',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_17-55-42_Ow0tyt/sadasd.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/clxtnlsv?modelResourceId=6f3a27fa-51e0-4773-9cb7-87d497b554af&mode=edit',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1952-zypqqx/archilogic_2017-10-02_19-51-14_6MiTgp.gz.data3d.buffer',
+    lightMapExposure: 0.626,
+    lightMapIntensity: 2.166
+  }
 },{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2056-hp86we/archilogic_2017-09-18_20-56-43_B4LLEX.gz.data3d.buffer',
-  format: 'data3d'
+  title: 'Millennium Falcon',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_17-57-37_4xyPaE/localhost_8081_examples_staff-picks_html_4.png',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/170903-1554-hl8t6r/archilogic_2017-09-03_15-47-13_dkhZ1I.gz.data3d.buffer'
+  },
+  type: 'io3d-data3d'
 },{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2106-0sr2cn/9fd87fec-8bdd-4bc1-b9ba-bbfc47d08008.gz.data3d.buffer',
-  format: 'data3d'
-},{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170903-1554-hl8t6r/archilogic_2017-09-03_15-47-13_dkhZ1I.gz.data3d.buffer',
-  format: 'data3d'
-},{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/bake/2017-07-10_22-52-44_4jn7em/regular/lighting.gz.data3d.buffer',
-  format: 'data3d'
-},{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170725-1421-wujxjb/archilogic_2017-07-25_14-19-02_hn9axa.gz.data3d.buffer',
-  format: 'data3d'
-},{
-  thumb: null,
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170927-2018-a10bpi/archilogic_2017-09-27_20-18-12_GT3EQI.gz.data3d.buffer',
-  format: 'data3d'
-},{
-  title: 'Loewy House by Albert Frey HalfSkyCylinder',
-  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-09-29_12-36-00_pGKpVA/Cursor_and_Archilogic.png',
+  title: 'Loewy House by Albert Frey',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-51-45_Obk9pz/Cursor_and_Archilogic.png',
   editorUrl: 'https://spaces.archilogic.com/model/archilogic/wlnobthy?modelResourceId=88ac69d1-28c1-406c-890c-1f86531e2a31&mode=edit',
-  url: 'https://storage.3d.io/535e624259ee6b0200000484/170929-1444-iae715/archilogic_2017-09-29_14-42-24_3Xo4kP.gz.data3d.buffer',
-  format: 'data3d'
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1928-ticazn/archilogic_2017-10-02_19-25-55_TGu8vT.gz.data3d.buffer'
+  }
 },{
-  title: '',
-  thumb: '',
-  editorUrl: '',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'Stahl House',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/la7jhe3t?modelResourceId=216cfcbc-82d3-4ad0-a834-e6cfbb173dcb&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'The Office',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/uhyxqfvr?modelResourceId=34bfdbba-a44d-4268-bdb8-6b7cfe719555',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'The Office Opacity',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/jvafqyqy?modelResourceId=4cf23256-ed41-4fc0-96b1-e495e93e3da0&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'Ryerson Student Learning Center',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/gnrn8dun?modelResourceId=6b02c7de-31bb-4641-af5b-52a9b1c334c4&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: '221B Baker Street - Sherlock\'s apartment',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/1i0vuotf?modelResourceId=de9457f2-74e1-4acf-b229-fb304093ef2e&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: 'Architecture Cardboard Model',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-26-46_cBo1I6/localhost_8081_examples_staff-picks_html_copy.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/psm59wss?modelResourceId=3e03a0e7-587b-473f-86b1-32fba6c13a8d&mode=edit',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1509-2xzmx3/archilogic_2017-10-02_14-50-27_85SdOH.gz.data3d.buffer',
+    lightMapIntensity: 0.850,
+    lightMapExposure: 0.9
+  }
 },{
   title: 'Big Bang Theory',
-  thumb: '',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_16-30-51_8ZMkZR/Cursor_and_Archilogic_2.png',
   editorUrl: 'https://spaces.archilogic.com/model/archilogic/fljox97z?modelResourceId=60dde7c8-d481-475f-9c0f-8ecbe57cef05&mode=edit',
-  url: '',
-  format: 'data3d'
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1837-069qe5/archilogic_2017-10-02_18-36-42_jZBOac.gz.data3d.buffer',
+    lightMapIntensity: 3,
+    lightMapExposure: 0.541
+  }
 },{
-  title: 'Christian Grey\'s Apartment',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/dekt1bq3?modelResourceId=6d511fe1-6189-452b-b822-510d42b74e72&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: 'Room (with lightmaps)',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_12-39-00_OoAMZ9/localhost_8081.png',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2056-hp86we/archilogic_2017-09-18_20-56-43_B4LLEX.gz.data3d.buffer',
+  }
 },{
-  title: 'Carrie Bradshaw\'s Apartment',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/fpt7d8rj?modelResourceId=77123cb8-ceb2-4bd7-8e59-9ee3feae7441&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: 'Bridge House',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-54-19_hRwy6W/localhost_8081_examples_staff-picks_html.png',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/170927-2018-a10bpi/archilogic_2017-09-27_20-18-12_GT3EQI.gz.data3d.buffer'
+  }
 },{
-  title: 'Friends',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/9ah60id5?modelResourceId=cf159e73-4f7a-413b-adb2-563913ba4fd7&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'Aluminaire_House',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/0imo45dd?modelResourceId=cff45650-49e6-43d2-993e-7076d6b07232&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'Miller & Monroe House by Frank Lloyd Wright ',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/qlnxw5bm?modelResourceId=ba644605-277f-4a12-bc9e-13cbc51e94e2&mode=edit',
-  url: '',
-  format: 'data3d'
-},{
-  title: 'Case Study House 4, Ralph Rapson',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/krxvla7n?modelResourceId=ac682b97-3c9b-45a0-9c90-f1534ea769d3&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: 'The Office',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-57-25_gyGxcm/khjghfd.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/jvafqyqy?modelResourceId=4cf23256-ed41-4fc0-96b1-e495e93e3da0&mode=edit',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1658-cc860l/archilogic_2017-10-02_16-57-49_Nfe9UZ.gz.data3d.buffer'
+  }
 },{
   title: '55 West 17th Street @night',
-  thumb: '',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_16-31-03_NaN4m8/Cursor_and_Archilogic_3.png',
   editorUrl: 'https://spaces.archilogic.com/model/archilogic/empzwgkx?modelResourceId=e717c8e5-3d7c-423b-b2f2-21874665a5b3&mode=edit&view-menu=none&main-menu=save&logo=false',
-  url: '',
-  format: 'data3d'
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1827-w81rq6/archilogic_2017-10-02_18-25-28_CYLCC5.gz.data3d.buffer',
+    lightMapIntensity: 2, //2.86,
+    lightMapExposure: 0.6 //0.672
+  }
 },{
-  title: 'Steve Jobs Theatre',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/clxtnlsv?modelResourceId=6f3a27fa-51e0-4773-9cb7-87d497b554af&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: null,
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_16-47-24_dmVHK7/localhost_8081_examples_staff-picks_html_2.png',
+  editorUrl: null,
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/processing/2017-09-20_11-42-38_Vnv6ma/lighting.gz.data3d.buffer',
+    lightMapIntensity: 1.2,
+    lightMapExposure: 0.6
+  }
 },{
-  title: 'The Performance Arcade',
-  thumb: '',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/rqjxqjug?modelResourceId=6dc5516a-1c90-4204-a572-bfb45beec3fe&mode=edit',
-  url: '',
-  format: 'data3d'
+  title: 'Apartment (with lightmaps)',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-49-30_4F8kDN/apt.png',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/170725-1421-wujxjb/archilogic_2017-07-25_14-19-02_hn9axa.gz.data3d.buffer'
+  }
+},{
+  title: 'Case Study House 4, Ralph Rapson',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_16-01-30_aXZWGC/jzthgf.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/krxvla7n?modelResourceId=ac682b97-3c9b-45a0-9c90-f1534ea769d3&mode=edit',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1754-b4u6gv/archilogic_2017-10-02_17-52-50_41hXdK.gz.data3d.buffer',
+    lightMapIntensity: 2,
+    lightMapExposure: 0.576
+  }
+},{
+  title: 'Stahl House',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-41-55_xBsnUO/sadsad.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/la7jhe3t?modelResourceId=216cfcbc-82d3-4ad0-a834-e6cfbb173dcb&mode=edit',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1639-r2mus5/archilogic_2017-10-02_16-39-08_HYWIGh.gz.data3d.buffer'
+  }
+},{
+  title: 'The Office (baked white)',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-46-10_mnLr4n/qwesadsad.png',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/uhyxqfvr?modelResourceId=34bfdbba-a44d-4268-bdb8-6b7cfe719555',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1644-4cfpoh/archilogic_2017-10-02_16-44-01_5CoeyU.gz.data3d.buffer',
+    lightMapIntensity: 1.4,
+    lightMapExposure: 0.83
+  }
+},{
+  title: 'Room (no lightmaps)',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-31-08_k31wKT/sdasd.png',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/170918-2106-0sr2cn/9fd87fec-8bdd-4bc1-b9ba-bbfc47d08008.gz.data3d.buffer'
+  },
+},{
+  title: 'Test Cube',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_12-30-54_8do34C/localhost_8081.png',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/archilogic/sample-models/cube-with-texture/data3d/cube-with-texture.gz.data3d.buffer',
+  }
 }]
