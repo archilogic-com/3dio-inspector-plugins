@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- boilerplate libs -->
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+
+  <!-- 3dio lib -->
+  <script src="https://dist.3d.io/3dio-js/1.x.x-beta/3dio.min.js"></script>
+  <!--<script src="http://localhost:8080/build/3dio.js"></script>-->
+
+  <!-- 3d.io inspector plugins -->
+  <script src="./build/3dio-inspector-plugins.js"></script>
+
+  <style>
+    #help-note {
+      z-index: 100010;
+      position: absolute;
+      top: 25px;
+      left: 240px;
+      width: 245px;
+      transform: rotate(2deg);
+    }
+    #help-note svg {
+      width: 100%;
+    }
+    #help-note span {
+      position: absolute;
+      top: 70px;
+      left: 25px;
+      width: 200px;
+      color: #8c7437;
+      font-family: "Roboto Mono", Consolas, "Andale Mono", Monaco, "Courier New", monospace;
+      font-size: 16px;
+      font-weight: normal;
+      letter-spacing: 0;
+    }
+    #help-note-close-button {
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+
+  </script>
+
+</head>
+<body>
+
+<!-- 3D -->
+<a-scene></a-scene>
+
+<!-- starts inspector -->
+<script src="https://rawgit.com/aframevr/aframe-inspector/master/dist/aframe-inspector.js"></script>
+<!--<script src="http://localhost:3333/dist/aframe-inspector.js"></script>-->
+
+<div id="help-note">
+  <span>
+    Click the 3d.io button for tons of models ;)
+  </span>
+  <?xml version="1.0" encoding="utf-8"?>
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 233 167" enable-background="new 0 0 233 167" xml:space="preserve">
+    <g id="help-note-background">
+      <polygon opacity="0.41" fill="#8C7437" points="12.5,9.5 227.5,26.5 232.5,164.5 12.5,164.5 "/>
+      <polygon fill="#FFEBB8" points="1.8,148.3 4.2,2.2 124.9,1 223.6,16.3 224.4,157.3"/>
+      <path fill="#8C7437" d="M124.8,1.5l98.3,15.2l0.8,140L2.3,147.8L4.7,2.7L124.8,1.5 M124.9,0.5L3.7,1.7L1.3,148.8l223.6,9 l-0.8-141.9L124.9,0.5L124.9,0.5z"/>
+    </g>
+    <g id="help-note-close-button">
+      <polygon fill="transparent" stroke="#8C7437" stroke-miterlimit="10" points="214.6,47.7 124.8,2 224.5,17.3"/>
+      <line fill="none" stroke="#8C7437" stroke-width="3" stroke-miterlimit="10" x1="205.7" y1="30.9" x2="197.6" y2="20.8"/>
+      <line fill="none" stroke="#8C7437" stroke-width="3" stroke-miterlimit="10" x1="206.7" y1="21.8" x2="196.7" y2="28.6"/>
+    </g>
+    <g id="help-note-arrow">
+      <polygon fill="#8C7437" points="34.6,33.4 24.3,27.4 34.6,21.4"/>
+      <line fill="none" stroke="#8C7437" stroke-width="3" stroke-miterlimit="10" x1="32.9" y1="27.4" x2="74" y2="27.3"/>
+    </g>
+  </svg>
+</div>
+
+<script>
+
+  var helpNoteEl = document.querySelector('#help-note')
+  document.querySelector('#help-note-close-button').addEventListener('click', function(){
+    helpNoteEl.style.display = 'none'
+  }, { once: true })
+
+  window.addEventListener('io3d-inspector-plugins-menu-state', function(event){
+    if (event.detail.isVisible) {
+      helpNoteEl.style.display = 'none'
+    }
+  })
+
+</script>
+
+</body>
+</html>
+

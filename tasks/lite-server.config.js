@@ -3,9 +3,8 @@
 module.exports = {
   port: 8081,
   startPath: '/examples/',
-  //files: ['examples','build'],
   files: [{
-    match: ['examples/**'],
+    match: ['index.html', 'examples/**'],
     watchEvents: ['change']
   }, {
     match: ['build/**'],

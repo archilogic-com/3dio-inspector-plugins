@@ -1,0 +1,51 @@
+.io3d-inspector-plugins {
+
+    * {
+        // no outline (dotted border) after cklicking object
+        outline: none;
+        // prevent padding changing dimensions
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+
+    &___tab-container {
+        position: absolute;
+        font-family: Roboto, BlinkMacSystemFont, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        top: 30px;
+        left: 0;
+        bottom: 0;
+        z-index: 100000;
+    }
+
+    &___tab {
+        position: absolute;
+        font-size: 12px;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 230px;
+        background-color: rgb(43,43,43);
+
+        @-webkit-keyframes io3d-inspector-plugins___tab___slide-in {
+            0% { -webkit-transform: translateX(-40%); opacity: 0; }
+            100% { -webkit-transform: translateX(0%); opacity: 1; }
+        }
+        @keyframes io3d-inspector-plugins___tab___slide-in {
+            0% { transform: translateX(-40%); opacity: 0; }
+            100% { transform: translateX(0%); opacity: 1; }
+        }
+
+        @-webkit-keyframes io3d-inspector-plugins___tab___slide-out {
+            0% { -webkit-transform: translateX(0%); opacity: 1; }
+            100% { -webkit-transform: translateX(-40%); opacity: 0; }
+        }
+        @keyframes io3d-inspector-plugins___tab___slide-out {
+            0% { transform: translateX(0%); opacity: 1; }
+            100% { transform: translateX(-40%); opacity: 0; }
+        }
+
+    }
+
+}

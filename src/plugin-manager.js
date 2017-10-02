@@ -13,20 +13,21 @@ var plugins = {}
 
 // methods
 
-function setPlugins(plugins_) {
+function setPlugins (plugins_) {
   plugins = plugins_
 }
 
-function init() {
-  if (isInitialized) return
+function init () {
+
   isInitialized = true
 
   // DOM
 
   // 3d.io button in action bar
-  
+
   io3dButtonEl = el('<div>', {
     id: 'io3d-inspector-plugins___3dio-button',
+    class: 'io3d-inspector-plugins',
     html: svg3dioLogo,
     click: toggleMenu
   }).appendTo(document.body)
@@ -34,7 +35,8 @@ function init() {
   // launcher menu
 
   menuContainerEl = el('<div>', {
-    id: 'io3d-inspector-plugins___plugins-menu'
+    id: 'io3d-inspector-plugins___plugins-menu',
+    class: 'io3d-inspector-plugins'
   }).appendTo(document.body)
 
   menuEl = el('<div>', {
@@ -53,7 +55,7 @@ function init() {
     click: hideMenu
   }).appendTo(headerEl)
 
-  Object.keys(plugins).forEach(function(name){
+  Object.keys(plugins).forEach(function (name) {
     var pluginButton = el('<div>', {
       id: 'io3d-inspector-plugins___plugins-menu___button',
       html: plugins[name].displayTitle,
@@ -61,7 +63,7 @@ function init() {
         showPlugin(name)
       }
     })
-    pluginButton.addEventListener('click', function(){
+    pluginButton.addEventListener('click', function () {
 
     })
     menuEl.append(pluginButton)
@@ -74,31 +76,43 @@ function init() {
 
 }
 
-function showPlugin(name) {
+function showPlugin (name, animate) {
+
   if (activePluginName) {
-    plugins[activePluginName].module.hide()
-  }
-  if (name) {
-    if (!plugins[name]) {
-      console.error('Plugin "'+name+'" not found. Available plugins are: "'+Object.keys(plugins).join('", "')+'"')
+    if (name === activePluginName && plugins[activePluginName].module.isVisible) {
+      return
     } else {
-      plugins[name].module.show()
-      activePluginName = name
-      hideMenu()
+      plugins[activePluginName].module.hide(null, animate)
     }
   }
+
+  if (name) {
+    if (!plugins[name]) {
+      console.error('Plugin "' + name + '" not found. Available plugins are: "' + Object.keys(plugins).join('", "') + '"')
+
+    } else {
+      if (!plugins[name].module.isVisible) plugins[name].module.show(null, animate)
+
+      activePluginName = name
+      hideMenu()
+
+    }
+  }
+
 }
 
-function show() {
+function show3dioButton () {
 
-  init()
+  if (!isInitialized) init()
+
   io3dButtonEl.show()
-  
+
 }
 
-function hide() {
+function hide3dioButton (callback) {
 
   io3dButtonEl.hide()
+  if (activePluginName) plugins[activePluginName].module.hide(callback)
   hideMenu()
 
 }
@@ -114,6 +128,10 @@ function showMenu (callback) {
   if (isVisibleMenu) return
   isVisibleMenu = true
 
+  if (!isInitialized) init()
+
+  window.dispatchEvent(new CustomEvent('io3d-inspector-plugins-menu-state', {detail: {isVisible: true}}))
+
   menuEl.style.opacity = 0
   menuEl.style.display = 'block'
 
@@ -122,7 +140,7 @@ function showMenu (callback) {
   menuEl.style['-webkit-animation-fill-mode'] = 'forwards'
   menuEl.style['animation-fill-mode'] = 'forwards'
 
-  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 500)
+  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 500)
 
   return pluginManager
 
@@ -133,17 +151,19 @@ function hideMenu (callback) {
   if (!isVisibleMenu) return
   isVisibleMenu = false
 
+  window.dispatchEvent(new CustomEvent('io3d-inspector-plugins-menu-state', {detail: {isVisible: false}}))
+
   menuEl.style['-webkit-animation'] = '600ms io3d-inspector-plugins___plugins-menu-slide-out ease-in'
   menuEl.style['animation'] = '600ms io3d-inspector-plugins___plugins-menu-slide-out ease-in'
   menuEl.style['-webkit-animation-fill-mode'] = 'forwards'
   menuEl.style['animation-fill-mode'] = 'forwards'
 
   // remove element
-  setTimeout(function(){
+  setTimeout(function () {
     menuEl.style.display = 'none'
   }, 600)
   // trigger callback function
-  if (callback && typeof callback === 'function') setTimeout(function(){ callback(); }, 300)
+  if (callback && typeof callback === 'function') setTimeout(function () { callback(); }, 300)
 
   return pluginManager
 
@@ -153,9 +173,11 @@ function hideMenu (callback) {
 
 var pluginManager = {
   setPlugins: setPlugins,
-  show: show,
-  hide: hide,
-  showPlugin: showPlugin
+  showPlugin: showPlugin,
+  show3dioButton: show3dioButton,
+  hide3dioButton: hide3dioButton,
+  showMenu: showMenu,
+  hideMenu: hideMenu
 }
 
 // expose API
