@@ -66,7 +66,10 @@ function createListTabUi (args) {
     listItemContainerEl.empty()
     if (items) items.forEach(function (item) {
 
-      var itemEl = el('<div>', {class: 'io3d-inspector-plugins___list-item'}).appendTo(listItemContainerEl)
+      var itemEl = el('<div>', {
+        class: 'io3d-inspector-plugins___list-item',
+        title: item.title ? item.title : '[no title]'
+      }).appendTo(listItemContainerEl)
       itemEl.setAttribute('draggable', true)
 
       if (item.thumb) {
