@@ -104,8 +104,6 @@ function hide () {
 
 // expose API
 
-console.log(pluginManager)
-
 var io3dInspectorPlugins = {
   setInitialPlugin: setInitialPlugin,
   showMenu: pluginManager.showMenu,
