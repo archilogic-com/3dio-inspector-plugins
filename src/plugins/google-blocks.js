@@ -57,7 +57,7 @@ function search (value, offset) {
 
     var items = results.map(function (item_) {
       return {
-        title: item_.title,
+        title: item_.title + ' by ' + item_.author,
         thumb: item_.image,
         url: item_.url,
         author: item_.author
@@ -84,7 +84,7 @@ function addToScene (item, position) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Loaded glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
+    io3d.utils.ui.message.success('Added glTF from:<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box

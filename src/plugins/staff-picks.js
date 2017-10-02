@@ -37,7 +37,7 @@ function init () {
 
 function addToScene (item, position) {
 
-  var uiMessage = io3d.utils.ui.message('Loading data3d from:<br><a href="' + item.editorUrl + '" target="_blank">' + item.editorUrl + '</a>', 0)
+  var uiMessage = io3d.utils.ui.message('Loading'+(item.title ? ' "'+item.title+'" ' : ' ') +'...', 0)
 
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
@@ -45,9 +45,10 @@ function addToScene (item, position) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Loaded data3d from:<br><a href="' + item.editorUrl + '" target="_blank">' + item.editorUrl + '</a>')
+    io3d.utils.ui.message.success('Added'+(item.title ? ' "'+item.title+'" to scene.' : 'model to scene.'))
 
     // center model to picking position
+
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
     var size = new THREE.Vector3(Math.abs(bb.max.x - bb.min.x), Math.abs(bb.max.y - bb.min.y), Math.abs(bb.max.z - bb.min.z))
     position.set(
@@ -60,11 +61,9 @@ function addToScene (item, position) {
 
   }, {once: true})
 
-  if (item.format === 'data3d') {
-    newEntity.setAttribute('io3d-data3d', 'url', item.url)
-  } else {
-    io3d.utils.ui.message.error('Error: Unknown model format: ' + item.format)
-  }
+  newEntity.setAttribute(item.type, stringifyAttributes(item.attributes))
+
+  // add other attributes
 
   document.querySelector('a-scene').appendChild(newEntity)
 
@@ -90,6 +89,14 @@ function hide (callback, animate) {
 
   listTab.hide(callback, animate)
 
+}
+
+function stringifyAttributes (attributes) {
+  var s = ''
+  Object.keys(attributes).forEach(function(name){
+    s += name +': '+ attributes[name] +'; '
+  })
+  return s
 }
 
 // expose API
