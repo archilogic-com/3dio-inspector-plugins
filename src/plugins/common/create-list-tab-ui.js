@@ -31,7 +31,8 @@ function createListTabUi (args) {
     setSearchValue: setSearchValue,
     init: init,
     show: show,
-    hide: hide
+    hide: hide,
+    focusSearchEl: focusSearchEl
   }
 
   // methods
@@ -239,15 +240,7 @@ function createListTabUi (args) {
   function show (callback, animate) {
     if (!isInitialized) init()
     tab.slideIn(function () {
-
-      if (searchInputEl) {
-        setTimeout(function () {
-          searchInputEl.focus()
-          searchInputEl.selectionStart = 10000
-          searchInputEl.selectionEnd = 10000
-        }, 50)
-      }
-
+      focusSearchEl()
       if (typeof callback === 'function') callback()
     }, animate)
   }
@@ -257,7 +250,17 @@ function createListTabUi (args) {
     tab.slideOut(callback, animate)
   }
 
-// expose API
+  function focusSearchEl () {
+    if (searchInputEl) {
+      setTimeout(function () {
+        searchInputEl.focus()
+        searchInputEl.selectionStart = 10000
+        searchInputEl.selectionEnd = 10000
+      }, 50)
+    }
+  }
+
+  // expose API
 
   return scope
 
