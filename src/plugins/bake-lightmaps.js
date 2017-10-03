@@ -19,15 +19,16 @@ function init () {
  * @param selected - THREE.Object3D or DOM query string selector referencing A-Frame element
  */
 
-function bakeLightmaps (selected) {
+function bakeLightmaps (object3D) {
 
-  if (!selected) {
+  if (!object3D) {
     io3d.utils.ui.message.error('Please select a group or a single object.')
     return
   }
 
-  if (typeof selected === 'string') {
-    selected = document.querySelector(selected).object3D
+  // in case input is a query selector
+  if (typeof object3D === 'string' && object3D[0] === '#') {
+    object3D = document.querySelector(object3D).object3D
   }
 
   // run
@@ -43,16 +44,16 @@ function bakeLightmaps (selected) {
 
   var uiMessage = io3d.utils.ui.message('Light map baking in progress...', 0)
 
-  io3d.publish(selected).then(function (storageId) {
+  io3d.storage.importThreeObject(object3D).then(function (storageId) {
 
-    console.log('Imported model to as data3d: ' + getDuration())
+    console.log('Imported model to storage: ' + getDuration())
     console.log('Imported file: ' + io3d.utils.data3d.getInspectorUrl(storageId))
 
     return Promise.all([
       // send baking request and
-      io3d.light.bake(storageId).then(io3d.light.bake.whenDone),
+      io3d.light.bake(storageId).then(io3d.utils.processing.whenDone),
       // wait for hi-res DDS texture generation
-      io3d.publish.whenHiResTexturesReady(storageId)
+      io3d.utils.processing.whenHiResTexturesReady(storageId)
     ])
 
   }).then(function (results) {
@@ -65,29 +66,28 @@ function bakeLightmaps (selected) {
     uiMessage.close()
     io3d.utils.ui.message.success('Baking Successful')
 
-    addBakedModelToScene(selected, bakedStorageId)
+    addBakedModelToScene(object3D, bakedStorageId)
 
   }, io3d.utils.ui.message.error)
 
 }
 
-function addBakedModelToScene (selected, storageId) {
+function addBakedModelToScene (object3D, storageId) {
 
-  var parent = selected.parent
-
-  var boundingBox = new THREE.Box3().setFromObject(selected)
+  // position object next to selected one
+  var boundingBox = new THREE.Box3().setFromObject(object3D)
   var width = (boundingBox.max.x - boundingBox.min.x)
   var position = new THREE.Vector3(
-    parent.position.x + width + width * 0.2,
-    parent.position.x,
-    parent.position.z
+    object3D.parent.position.x + width + width * 0.2,
+    object3D.parent.position.x,
+    object3D.parent.position.z
   )
 
   // add baked element to aframe scene
   var bakedEl = document.createElement('a-entity')
   bakedEl.setAttribute('position', position)
   bakedEl.setAttribute('io3d-data3d', 'key:' + storageId + ';lightMapExposure:1.1;lightMapIntensity:0.85;')
-  parent.el.append(bakedEl)
+  object3D.el.parentElement.append(bakedEl)
 
   // select baked file
   bakedEl.addEventListener('model-loaded', function () {
