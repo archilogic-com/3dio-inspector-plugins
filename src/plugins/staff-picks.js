@@ -45,7 +45,7 @@ function addToScene (item, position) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Added'+(item.title ? ' "'+item.title+'" to scene.' : 'model to scene.'))
+    io3d.utils.ui.message.success('Added'+(item.title ? ' "'+item.title+'"' : 'model'))
 
     // center model to picking position
 
