@@ -65,7 +65,8 @@ function search (value, offset) {
     })
 
     listTab.setList(items)
-    listTab.setInfo(items.length ? null : 'No results found.')
+    var info = 'API code is open sourced on <a target="_blank" href="https://github.com/archilogic-com/aframe-gblock/blob/master/server/api-methods.js">github</a>'
+    listTab.setInfo(items.length ? info : 'No results found.')
 
   }).catch(function (error) {
     console.error(error)
