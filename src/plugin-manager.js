@@ -71,7 +71,7 @@ function init () {
 
   el('<div>', {
     id: 'io3d-inspector-plugins___plugins-menu___footer',
-    html: 'You can use all of these APIs directly in your own 3D apps. <a target="_blank" href="https://3d.io/docs/api/1/">Read more</a>'
+    html: 'This project is <a target="_blank" href="https://github.com/archilogic-com/3dio-inspector-plugins">open source</a>. You can also use all APIs directly in your own webVR & webAR apps. <a target="_blank" href="https://3d.io/docs/api/1/">Read more</a>'
   }).appendTo(menuEl)
 
 }
