@@ -112,13 +112,23 @@ export default [{
   }
 },{
   title: 'The Office (baked white)',
-  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-46-10_mnLr4n/qwesadsad.png',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-04_16-22-37_Od7ppw/qwesadsad-1.png',
   editorUrl: 'https://spaces.archilogic.com/model/archilogic/uhyxqfvr?modelResourceId=34bfdbba-a44d-4268-bdb8-6b7cfe719555',
   type: 'io3d-data3d',
   attributes: {
     url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1644-4cfpoh/archilogic_2017-10-02_16-44-01_5CoeyU.gz.data3d.buffer',
     lightMapIntensity: 1.4,
     lightMapExposure: 0.83
+  }
+},{
+  title: 'Empty apartment (with lightmaps)',
+  thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-04_16-21-52_z16iGz/localhost_8081_examples_staff-picks_html_5.png',
+  editorUrl: 'https://spaces.archilogic.com/3d/archilogic/h4959x0g?modelResourceId=62cb3510-6708-4f62-94c3-f9936db7e20b',
+  type: 'io3d-data3d',
+  attributes: {
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/bake/2017-06-30_11-05-49_P144IW/regular/lighting.gz.data3d.buffer',
+    lightMapIntensity: 1.2,
+    lightMapExposure: 0.6
   }
 },{
   title: 'Room (no lightmaps)',
