@@ -35,7 +35,7 @@ function init () {
 }
 
 function callSearchApi (offset, value) {
-  return fetch('https://us-central1-gblock-api.cloudfunctions.net/search?limit=10&offset=' + offset + '&query=' + value).then(function (response) {
+  return fetch('https://gblock.3d.io/api/search?limit=10&offset=' + offset + '&query=' + value).then(function (response) {
     return response.json()
   })
 }
