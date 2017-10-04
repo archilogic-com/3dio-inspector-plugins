@@ -60,15 +60,15 @@ export default [{
 },{
   title: 'The Office',
   thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_14-57-25_gyGxcm/khjghfd.png',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/jvafqyqy?modelResourceId=4cf23256-ed41-4fc0-96b1-e495e93e3da0&mode=edit',
+  editorUrl: 'https://spaces.archilogic.com/3d/archilogic/nsh7wfvq?modelResourceId=3d6acff4-abcd-4c58-b3f3-d56d99642199&mode=edit',
   type: 'io3d-data3d',
   attributes: {
-    url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1658-cc860l/archilogic_2017-10-02_16-57-49_Nfe9UZ.gz.data3d.buffer'
+    url: 'https://storage.3d.io/535e624259ee6b0200000484/171004-1708-j45k01/archilogic_2017-10-04_17-07-52_TZmYmS.gz.data3d.buffer'
   }
 },{
   title: '55 West 17th Street @night',
   thumb: 'https://storage.3d.io/535e624259ee6b0200000484/2017-10-02_16-31-03_NaN4m8/Cursor_and_Archilogic_3.png',
-  editorUrl: 'https://spaces.archilogic.com/model/archilogic/empzwgkx?modelResourceId=e717c8e5-3d7c-423b-b2f2-21874665a5b3&mode=edit&view-menu=none&main-menu=save&logo=false',
+  editorUrl: 'https://spaces.archilogic.com/model/archilogic/empzwgkx?modelResourceId=e717c8e5-3d7c-423b-b2f2-21874665a5b3&mode=edit',
   type: 'io3d-data3d',
   attributes: {
     url: 'https://storage.3d.io/535e624259ee6b0200000484/171002-1827-w81rq6/archilogic_2017-10-02_18-25-28_CYLCC5.gz.data3d.buffer',
