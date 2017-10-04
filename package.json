@@ -1,6 +1,6 @@
 {
   "name": "3dio-inspector-plugins",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connects A-Frame Inspector to 3d.io APIs",
   "keywords": [
     "3d",
