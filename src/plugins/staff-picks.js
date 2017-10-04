@@ -29,7 +29,7 @@ function init () {
 
   listTab.init()
 
-  listTab.setInfo('Models for experimenting & testing. Kudos to <a target="_blank" href="https://twitter.com/Pandatology">@Pandatology</a>, <a target="_blank" href="https://twitter.com/anialdam">@anialdam</a>')
+  listTab.setInfo('<a target="_blank" href="https://spaces.archilogic.com">Archilogic Models</a> for experimenting & testing. Kudos to <a target="_blank" href="https://twitter.com/Pandatology">@Pandatology</a>, <a target="_blank" href="https://twitter.com/anialdam">@anialdam</a>')
   listTab.setList(staffPickItems)
 
   isInitialized = true

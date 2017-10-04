@@ -1,6 +1,6 @@
 # A-Frame Inspector Plugins by 3d.io
 
-We love content and strive to make it easily accessible and reusable. Inspector Plugins provides hosted 3d models from various open source friendly projects directly in the [A-Frame Inspector](https://github.com/aframevr/aframe-inspector).
+We love 3d content and strive to make it easily accessible and reusable. Inspector Plugins provide hosted 3d models from various open source friendly projects directly in the [A-Frame Inspector](https://github.com/aframevr/aframe-inspector).
 
 ### [Live Demo](https://archilogic-com.github.io/3dio-inspector-plugins)
 

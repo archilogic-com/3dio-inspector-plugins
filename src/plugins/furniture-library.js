@@ -23,7 +23,7 @@ var searchDebounced = debounce(function search(value){
 
       if (items.length) {
         // show some info on models
-        listTab.setInfo('All models have environment based texture sets, loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)')
+        listTab.setInfo('<a target="_blank" href="https://furniture.3d.io/">3d.io Furniture Library</a>. All models have environment based texture sets: loading automatically small textures on mobile and DDS textures progressively on desktop. Enjoy ;)')
       } else {
         // show no result text
         listTab.setInfo('Sorry, we didn\'t find any furniture for your query.<br><br>Try one of the following: desk, couch, bathroom, bed, plant, office, outdoor, kids, lamp, chair, red chair, car, vitra, eames, zaha hadid, piano, black, blue ...')
