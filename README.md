@@ -1,5 +1,7 @@
 # A-Frame Inspector Plugins by 3d.io
 
+We love content and strive to make it easily accessible and reusable. Inspector Plugins provides hosted 3d models from various open source friendly projects directly in the [A-Frame Inspector](https://github.com/aframevr/aframe-inspector).
+
 ### [Live Demo](https://archilogic-com.github.io/3dio-inspector-plugins)
 
 ![](static/inspector-plugins-001.gif)
@@ -11,7 +13,7 @@ More demos:
 
 ## Usage
 
-1. Add the 3d.io library script to the `<head>` section of your page right after aframe like this:
+1. Add [3d.io library](https://github.com/archilogic-com/3dio-js) script to the `<head>` section of your page right after aframe 0.7.0 (or higher):
 
 ```html
 <head>
@@ -33,14 +35,15 @@ More demos:
 
 ### Installation
 
-
+1. `git clone https://github.com/archilogic-com/3dio-inspector-plugins.git`
+2. `npm install`
+3. `npm start`
 
 ## Acknowledgements
 
-- 
-- [A-Frame](https://aframe.io/) 
+- [A-Frame](https://aframe.io/)
 - [three.js](https://threejs.org/)
-- [GLTF loader](https://threejs.org/examples/#webgl_loader_gltf)
+- [Arturo Paracuellos](https://twitter.com/arturitu) (for making google blocks searchable)
 
 ## License
 
