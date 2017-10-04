@@ -4,6 +4,11 @@
 
 ![](static/inspector-plugins-001.gif)
 
+More demos:
+- [Google Blocks tag aka "gblock"](https://archilogic-com.github.io/3dio-inspector-plugins/google-blocks.html)
+- [Furniture Library](https://archilogic-com.github.io/3dio-inspector-plugins/furniture-library.html)
+- [Staff Picks](https://archilogic-com.github.io/3dio-inspector-plugins/staff-picks.html)
+
 ## Usage
 
 1. Add the 3d.io library script to the `<head>` section of your page right after aframe like this:
