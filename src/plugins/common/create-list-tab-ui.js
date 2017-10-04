@@ -109,6 +109,12 @@ function createListTabUi (args) {
         return false
       }, false)
 
+      itemEl.addEventListener('click', function onItemDragStart (e) {
+        if (e.stopPropagation) e.stopPropagation() // stops the browser from redirecting.
+        io3d.utils.ui.message('Hint: Drag & drop item into the scene ;)')
+        return false
+      }, false)
+
     })
 
   }
