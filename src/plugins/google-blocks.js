@@ -77,7 +77,7 @@ function search (value, offset) {
 
 function addToScene (item, position, callback) {
 
-  var uiMessage = io3d.utils.ui.message('Loading glTF from<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>', 0)
+  var uiMessage = io3d.utils.ui.message('Loading glTF from<br><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>', 0)
 
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
@@ -85,7 +85,7 @@ function addToScene (item, position, callback) {
   newEntity.addEventListener('model-loaded', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.success('Added<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
+    io3d.utils.ui.message.success('Added<br><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>')
 
     // center model to picking position
     var bb = new THREE.Box3().setFromObject(event.detail.model) // bounding box
@@ -105,7 +105,7 @@ function addToScene (item, position, callback) {
   newEntity.addEventListener('model-error', function (event) {
 
     uiMessage.close()
-    io3d.utils.ui.message.error('Sorry: ' + event.detail.message + '<br/><a href="' + item.url + '" target="_blank">' + item.url + '</a>')
+    io3d.utils.ui.message.error('Sorry: ' + event.detail.message + '<br/><a class="io3d-inspector-plugins___truncate-message" href="' + item.url + '" target="_blank">' + item.url + '</a>')
 
   }, {once: true})
 
