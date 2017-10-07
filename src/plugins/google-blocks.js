@@ -75,7 +75,7 @@ function search (value, offset) {
 
 }
 
-function addToScene (item, position) {
+function addToScene (item, position, callback) {
 
   var uiMessage = io3d.utils.ui.message('Loading glTF from<br><a href="' + item.url + '" target="_blank">' + item.url + '</a>', 0)
 
@@ -97,6 +97,8 @@ function addToScene (item, position) {
     )
 
     newEntity.setAttribute('position', position.x + ' ' + position.y + ' ' + position.z)
+
+    callback()
 
   }, {once: true})
 

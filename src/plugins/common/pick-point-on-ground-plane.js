@@ -9,13 +9,17 @@ export default function pickPointOnGroundPlane (args) {
   // API
   var x = args.x
   var y = args.y
+  var nX = args.normalizedX
+  var nY = args.normalizedY
   var canvas = args.canvas
   var camera = args.camera
 
   // get normalized 2D coordinates
-  var viewport = canvas.getBoundingClientRect()
-  var nX = 2 * (x - viewport.left) / viewport.width - 1
-  var nY = -(2 * (y - viewport.top) / viewport.height - 1)
+  if (nX === undefined || nY === undefined) {
+    var viewport = canvas.getBoundingClientRect()
+    nX = 2 * (x - viewport.left) / viewport.width - 1
+    nY = -(2 * (y - viewport.top) / viewport.height - 1)
+  }
 
   // setup raycaster
   pickingRaycaster.set(

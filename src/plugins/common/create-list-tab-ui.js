@@ -3,6 +3,10 @@ import createTabUi from './create-tab-ui.js'
 import pickPointOnGroundPlane from './pick-point-on-ground-plane.js'
 import getCenteredImageLayout from './get-centered-image-layout.js'
 
+// shared internals
+
+var showDragAndDropHint = true
+
 // internals
 
 function createListTabUi (args) {
@@ -111,7 +115,24 @@ function createListTabUi (args) {
 
       itemEl.addEventListener('click', function onItemDragStart (e) {
         if (e.stopPropagation) e.stopPropagation() // stops the browser from redirecting.
-        io3d.utils.ui.message('Hint: Drag & drop item into the scene ;)')
+
+        // add to screen center
+        var position = pickPointOnGroundPlane({
+          normalizedX: 0,
+          normalizedY: 0,
+          camera: AFRAME.INSPECTOR.EDITOR_CAMERA
+        })
+
+        onItemDropCallback(item, position, function (){
+          // show drag & drop hint after loading success message
+          if (showDragAndDropHint) {
+            setTimeout(function(){
+              io3d.utils.ui.message('Hint: You can use drag & drop ;)', 6000)
+              showDragAndDropHint = false
+            }, 1000)
+          }
+        })
+
         return false
       }, false)
 
@@ -227,7 +248,7 @@ function createListTabUi (args) {
     // get item data
     var item = JSON.parse(e.dataTransfer.getData('text/plain'))
 
-    onItemDropCallback(item, position)
+    onItemDropCallback(item, position, function(){})
 
     return false
   }

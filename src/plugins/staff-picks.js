@@ -36,7 +36,7 @@ function init () {
 
 }
 
-function addToScene (item, position) {
+function addToScene (item, position, callback) {
 
   var uiMessage = io3d.utils.ui.message('Loading'+(item.title ? ' "'+item.title+'" ' : ' ') +'...', 0)
 
@@ -59,6 +59,8 @@ function addToScene (item, position) {
     )
 
     newEntity.setAttribute('position', position.x + ' 0 ' + position.z)
+
+    callback()
 
   }, {once: true})
 

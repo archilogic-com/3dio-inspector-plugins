@@ -72,13 +72,17 @@ function init () {
 
 }
 
-function addToScene (item, position) {
+function addToScene (item, position, callback) {
 
   // add new entity to scene
   var newEntity = document.createElement('a-entity')
   newEntity.setAttribute('io3d-furniture', 'id', item.furnitureId)
   newEntity.setAttribute('position', position.x + ' 0 ' + position.z)
   document.querySelector('a-scene').appendChild(newEntity)
+
+  newEntity.addEventListener('model-loaded', function (event) {
+    callback()
+  })
 
 }
 
