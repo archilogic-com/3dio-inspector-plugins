@@ -4,7 +4,7 @@ import el from './common/dom-el.js'
 import pluginManager from './plugin-manager.js'
 // plugins
 import furnitureLibrary from './plugins/furniture-library.js'
-import googleBlocks from './plugins/google-blocks.js'
+import polyModels from './plugins/poly-models.js'
 import staffPicks from './plugins/staff-picks.js'
 import bakeLightmaps from './plugins/bake-lightmaps.js'
 
@@ -16,9 +16,9 @@ var PLUGINS = {
     // access
     module: furnitureLibrary
   },
-  googleBlocks: {
-    displayTitle: '🥑&nbsp;&nbsp;google blocks',
-    module: googleBlocks
+  polyModels: {
+    displayTitle: '🥑&nbsp;&nbsp;poly.google.com',
+    module: polyModels
   },
   staffPicks: {
     displayTitle: '✨&nbsp;&nbsp;staff picks',

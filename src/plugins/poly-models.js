@@ -22,7 +22,7 @@ var listTab
 function init () {
 
   listTab = createListTabUi({
-    title: 'Google Blocks',
+    title: 'Models from <a target="_blank" href="https://poly.google.com">poly.google.com</a>',
     onSearchChange: search,
     onItemDrop: addToScene,
     onHide: function () {
